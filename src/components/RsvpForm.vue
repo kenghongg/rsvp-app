@@ -20,31 +20,6 @@
           color="#043b85"
         ></v-text-field>
 
-        <!-- <v-text-field
-          v-model="email.value.value"
-          :error-messages="email.errorMessage.value"
-          label="电邮 | E-mail"
-        ></v-text-field> -->
-
-        <!-- <v-radio-group
-          class="attendance-radio-group"
-          inline
-          v-model="attendance.value.value"
-          :error-messages="attendance.errorMessage.value"
-        >
-          <v-radio
-            label="出席 | Attending"
-            value="Attending"
-            class="attendance-radio attendance-radio__yes"
-          ></v-radio>
-          <v-radio
-            label="缺席 | Not attending"
-            value="Not attending"
-            class="attendance-radio attendance-radio__no"
-            @click="notAttending"
-          ></v-radio>
-        </v-radio-group> -->
-
         <div>
           <div v-if="guestList.length > 0" class="guest-list-container">
             <div class="added-guest-title">嘉宾 | Guest(s)</div>
@@ -112,46 +87,24 @@
           </v-dialog>
         </div>
 
-        <!-- <template v-if="attendance.value.value === 'Attending'">
-          <div
-            class="d-flex mb-2"
-            v-for="(guest, index) in guestList"
-            :key="index"
-            :rules="[(v) => !!v || 'Guest name is required']"
-          >
-            <v-text-field
-              v-model="guest.guestName"
-              :label="`#${index + 1} 嘉賓姓名 | Guest Name`"
-            ></v-text-field>
-            <v-btn
-              class="ml-4 mt-2 mr-1"
-              icon="mdi-close"
-              size="x-small"
-              @click="removeGuestList(index)"
-            ></v-btn>
-          </div>
-
-          <v-btn prepend-icon="mdi-plus" @click="addGuestList"
-            >添加嘉宾 | Add Guest</v-btn
-          >
-        </template> -->
-
         <div style="padding: 10px"></div>
+
+        <!-- <v-btn @click="handleReset"> clear </v-btn> -->
 
         <v-btn
           variant="flat"
           color="#043b85"
-          type="submit"
+          
           text-color="white"
           :style="{ color: 'white' }"
           append-icon="mdi-send"
           size="x-large"
           class="d-flex justify-content-end w-100"
+          type="submit"
         >
           提交 | Submit
         </v-btn>
 
-        <!-- <v-btn @click="handleReset"> clear </v-btn> -->
       </form>
     </v-responsive>
   </v-container>
@@ -199,34 +152,14 @@ export default {
           if (value?.length > 7 && /[0-9-]+/.test(value)) return true;
           return "Phone number needs to be at least 8 digits.";
         },
-        // email(value) {
-        //   if (/^[a-zA-Z0-9.-]+@[a-zA-Z.-]+\.[a-zA-Z]+$/.test(value))
-        //     return true;
-        //   return "Must be a valid e-mail.";
-        // },
-        attendance(value) {
-          if (value) return true;
-          return "Select attendance.";
-        },
       },
     });
 
     const name = useField("name");
     const phone = useField("phone");
-    // const email = useField("email");
-    const attendance = useField("attendance");
-
-    // const guestList = ref([]);
-
-    // const submit = handleSubmit((values) => {
-    //   if (attendance.value.value === "Attending") {
-    //     const guestNames = guestList.value.map((guest) => guest.name);
-    //     values.guestNames = guestNames;
-    //   }
-    //   alert(JSON.stringify(values, null, 2));
-    // });
 
     const submit = handleSubmit((values) => {
+      
       const now = new Date();
       values.submissionTime = now.toISOString();
       alert(JSON.stringify({ ...values, guestList: guestList.value }, null, 2));
@@ -236,7 +169,6 @@ export default {
       name,
       phone,
       // email,
-      attendance,
       submit,
       handleReset,
     };
