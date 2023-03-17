@@ -1,10 +1,10 @@
 <template>
-  <!-- <div
+  <div
     class="deactive-layer"
     v-if="isLayerVisible"
     @touchstart="handleLayerChange"
     @click="handleLayerChange"
-  ></div> -->
+  ></div>
   <div class="music-btn-wrap">
     <!-- <v-btn @click="toggleMusic">{{ musicOn ? "Off" : "On" }}</v-btn> -->
     <!-- <v-btn icon="mdi-music" @click="toggleMusic"></v-btn> -->
@@ -52,9 +52,9 @@ export default {
     },
     handleLayerChange() {
       this.isLayerVisible = false;
-      // this.musicOn = true;
+      this.musicOn = true;
       // this.musicOn = false;
-      // this.$refs.music.play();
+      this.$refs.music.play();
     },
     // scrollToBottom() {
     //   // Set the scroll position to the bottom of the page
