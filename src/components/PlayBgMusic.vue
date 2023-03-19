@@ -109,8 +109,9 @@ export default {
   right: 16px;
   .music-btn {
     // background: salmon;
-    background: rgba(255, 255, 255, 0.6);
+    background: rgba(95, 2, 2, 0.3);
     backdrop-filter: blur(12px);
+    color: #ffffff;
   }
 }
 

@@ -7,6 +7,9 @@
   ></div>
 
   <v-container class="restaurant-info-container">
+    <p class="text-center font-weight-bold mb-2">
+      华联斐翠酒家 <br />OUG Jade Restaurant
+    </p>
     <p class="text-center">
       2nd Floor The Market Place,
       <br />2, Jalan Hujan Rahmat, Taman Overseas Union, <br />58200 Kuala
@@ -64,7 +67,7 @@ export default {
 }
 
 .restaurant-img-bg {
-  margin-top:40px;
+  margin-top: 40px;
   width: 100%;
   height: 300px;
   background: url("../assets/img/restaurantMap.gif") center center;

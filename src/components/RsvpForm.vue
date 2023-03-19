@@ -94,7 +94,6 @@
         <v-btn
           variant="flat"
           color="#043b85"
-          
           text-color="white"
           :style="{ color: 'white' }"
           append-icon="mdi-send"
@@ -104,7 +103,6 @@
         >
           提交 | Submit
         </v-btn>
-
       </form>
     </v-responsive>
   </v-container>
@@ -159,7 +157,6 @@ export default {
     const phone = useField("phone");
 
     const submit = handleSubmit((values) => {
-      
       const now = new Date();
       values.submissionTime = now.toISOString();
       alert(JSON.stringify({ ...values, guestList: guestList.value }, null, 2));
@@ -193,49 +190,24 @@ body {
   }
 
   .added-guest-title {
-    // background: #eaf1f9;
     padding: 8px 16px;
     font-weight: 600;
   }
 
   .v-input__control {
-    // background: #eaf1f9;
     border-radius: 12px;
   }
 
-  // .v-text-field--outlined > fieldset {
-  //   border-color: rgba(192, 0, 250, 0.986) !important;
-  // }
-
   .v-field__outline {
-    // background:salmon;
-    // border-bottom: 0;
     border: 0;
   }
 
   .v-field__overlay {
-    // opacity: 0.5 !important;
     background: #ffffff !important;
   }
 
   .btn-submit .v-btn__content {
     color: #ffffff;
-  }
-
-  .v-field--focused {
-    // background: #e9ffff;
-  }
-  .v-input__details {
-    // margin-bottom:24px;
-  }
-
-  .v-text-field {
-  }
-
-  .v-field__field {
-    // background: salmon;
-    // border-radius: 12px;
-    // background: #EAF1F9;
   }
 
   .attendance-radio-group {
@@ -251,7 +223,6 @@ body {
 
       .v-label {
         width: 100% !important;
-        // background: blue !important;
       }
 
       &__yes {

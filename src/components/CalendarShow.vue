@@ -1,18 +1,21 @@
 <template>
-  <v-container>
+  <v-container class="d-flex align-items-center">
     <div class="calendar-wrap">
       <div class="cal-header">
-        <div class="cal-month">December</div>
+        <div class="cal-month">Dec</div>
+        <div class="cal-divider">
+          <v-divider :thickness="6" color="#784705"></v-divider>
+        </div>
         <div class="cal-year">2023</div>
       </div>
       <div class="cal-week">
-        <div>Mon</div>
-        <div>Tue</div>
-        <div>Wed</div>
-        <div>Thu</div>
-        <div>Fri</div>
-        <div>Sat</div>
-        <div>Sun</div>
+        <div>M</div>
+        <div>T</div>
+        <div>W</div>
+        <div>T</div>
+        <div>F</div>
+        <div>S</div>
+        <div>S</div>
       </div>
       <div class="cal-days">
         <div class="not-this-month">27</div>
@@ -59,20 +62,42 @@
         <div>31</div>
       </div>
 
-      <vue3-flip-countdown
-    deadline="2023-12-16 19:00:00"
-    mainFlipBackgroundColor="#043b85"
-    secondFlipBackgroundColor="#1c58ab"
-    mainColor="#ffffff"
-    secondFlipColor="#ffffff"
-    labelSize="12px"
-    labelColor="#888888"
-  ></vue3-flip-countdown>
+      <div class="">
+        <vue3-flip-countdown
+          deadline="2023-12-16 19:00:00"
+          mainFlipBackgroundColor="#784704"
+          secondFlipBackgroundColor="#a58664"
+          mainColor="#ffffff"
+          secondFlipColor="#ffffff"
+          countdownSize="32px"
+          labelSize="14px"
+          labelColor="#784704"
+          :labels="{ days: '天', hours: '时', minutes: '分', seconds: '秒' }"
+        ></vue3-flip-countdown>
+      </div>
     </div>
   </v-container>
-  
 
- 
+  <v-container class="date-calendar" max-width="sm">
+    <v-divider :thickness="6" color="#784705"></v-divider>
+
+    <div class="text-right date-detail">
+      <div class="txt-cn">農曆冬月初四</div>
+      <div>2023・12・16 - 6:00pm</div>
+    </div>
+
+    <!-- <v-divider vertical :thickness="6" color="#784705"></v-divider> -->
+
+    <v-btn
+      variant="flat"
+      color="#efeae6"
+      :style="{ color: '#784704' }"
+      size="large"
+      icon
+    >
+      <v-icon>mdi-calendar-plus</v-icon>
+    </v-btn>
+  </v-container>
 </template>
 
 <style lang="scss" scoped>
@@ -80,19 +105,60 @@
   // font-size: 12px !important;
 }
 .calendar-wrap {
-  padding: 16px 24px;
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-  border-radius: 8px;
+  // padding: 16px 24px;
+  // box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  // border-radius: 8px;
   width: 100%;
   margin: auto;
-  max-width: 600px;
+  max-width: 320px;
+}
+
+.date-calendar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #784704;
+  // font-weight: 700;
+  gap: 16px;
+  font-size: 14px;
+
+  .date-detail {
+    min-width: 160px;
+  }
+
+  .txt-cn {
+    font-size: 22px;
+    font-weight: 600;
+  }
+}
+
+.flip-count-wrap {
+  position: relative;
+  width: 0px;
+  // width: 10px;
+}
+
+.flip-countdown {
+  // transform: rotate(270deg);
+  // position: absolute;
+  // width: 300px;
+  // top: 0;
+  // left: 0;
 }
 
 .cal-header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   align-items: flex-end;
   position: relative;
+  color: #784704;
+
+  .cal-divider {
+    padding: 0 32px;
+    margin-bottom: 24px;
+    width: 50%;
+  }
 
   .cal-year {
     font-size: 32px;
@@ -112,10 +178,11 @@
   display: flex;
   border-radius: 24px;
   // background: rgb(199, 160, 156);
-  padding: 6px 12px;
+  padding: 4px 12px;
   justify-content: space-between;
   margin-top: 8px;
-  background: linear-gradient(91.61deg, #2b6dc7 0%, #043b85 100%);
+  // background: linear-gradient(91.61deg, #2b6dc7 0%, #043b85 100%);
+  background: linear-gradient(91.61deg, #a58664 0%, #784704 100%);
   color: #ffffff;
   // box-shadow: inset 12px 12px 24px rgba(219, 225, 231, 0.25),
   //   inset -24px -24px 43px #bfe0ff;
@@ -126,6 +193,7 @@
     width: 14%;
     // background: purple;
     text-align: center;
+    font-size: 12px;
   }
 }
 
@@ -134,7 +202,7 @@
   flex-wrap: wrap;
   padding: 6px 12px;
   justify-content: space-between;
-  margin-bottom:8px;
+  margin-bottom: 8px;
 
   div {
     width: 14%;
@@ -142,7 +210,7 @@
     padding: 6px 2px;
     // background: purple;
     position: relative;
-    font-size: 14px;
+    font-size: 11px;
 
     &.not-this-month {
       opacity: 0.3;
@@ -153,6 +221,7 @@
       z-index: 2;
       // font-size: 50px;
       position: relative;
+      font-weight: 800;
       // position: absolute;
       // top: 50%;
       // left: 50%;
