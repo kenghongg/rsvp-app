@@ -46,9 +46,9 @@
         <a href="#"><img :src="appBtnGMapSrc" alt="" /></a>
         <span>Google Maps</span>
       </div>
-      <div class="wed-car">
+      <!-- <div class="wed-car">
         <img src="../assets/img/wedding-car.png" alt="" />
-      </div>
+      </div> -->
     </div>
   </v-container>
 

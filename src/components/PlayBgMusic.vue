@@ -29,11 +29,16 @@ export default {
   data() {
     return {
       musicOn: false,
-      musicSrc: music03,
+      musicSrc: '',
       isLayerVisible: true,
+      musicSources: [music01, music02, music03],
     };
   },
   methods: {
+    playRandomMusic() {
+      const randomIndex = Math.floor(Math.random() * this.musicSources.length);
+      this.musicSrc = this.musicSources[randomIndex];
+    },
     toggleMusic() {
       this.musicOn = !this.musicOn;
       if (this.musicOn) {
@@ -78,6 +83,8 @@ export default {
     // },
   },
   mounted() {
+    this.playRandomMusic();
+    
     // Pause music when the user switches to another tab
     document.addEventListener("visibilitychange", this.handleVisibilityChange);
     // this.musicOn = true;

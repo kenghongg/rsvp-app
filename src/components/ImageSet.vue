@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <div class="wedding-top-container">
-      <img src="../assets/img/wedding-top.png" />
+      <img src="../assets/img/wedding-top1.png" />
     </div>
   </v-container>
 </template>

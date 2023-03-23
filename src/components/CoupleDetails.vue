@@ -3,10 +3,13 @@
     <div class="couple-container">
       <div class="couple-content">
         <div class="couple-img">
-          <img src="../assets/img/wedding-top.png" />
+          <img
+            src="../assets/img/wedding-top.png"
+            style="background: #2d2d2d; border-radius: 50%"
+          />
         </div>
         <div class="couple-details">
-          <div class="txt-cn">新浪：呵呵呵</div>
+          <!-- <div class="txt-cn">新浪：呵呵呵</div> -->
         </div>
         <div class="couple-contact">
           <v-btn
@@ -23,7 +26,10 @@
       </div>
       <div class="couple-content">
         <div class="couple-img">
-          <img src="../assets/img/wedding-top.png" />
+          <img
+            src="../assets/img/wedding-top.png"
+            style="background: #2d2d2d; border-radius: 50%"
+          />
         </div>
         <div class="couple-details"></div>
         <div class="couple-contact">
@@ -49,6 +55,11 @@
   justify-content: center;
   gap: 24px;
 }
+
+.couple-contact {
+  margin-top: 16px;
+}
+
 .couple-img {
   img {
     display: block;
