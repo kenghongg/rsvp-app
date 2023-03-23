@@ -39,16 +39,14 @@
 
     <div class="nav-btn-container">
       <div class="nav-btn">
-        <a href="#"><img :src="appBtnWazeSrc" alt="" /></a>
+        <a href="https://www.waze.com/live-map/directions/my/wilayah-persekutuan-kuala-lumpur/kuala-lumpur/oug-jade-restaurant?to=place.ChIJ-bneHlhKzDERDNbrsWJ-gdI" target="_blank"><img :src="appBtnWazeSrc" alt="" /></a>
         <span>Waze</span>
       </div>
       <div class="nav-btn">
-        <a href="#"><img :src="appBtnGMapSrc" alt="" /></a>
+        <a href="https://www.google.com/maps/dir//google+maps+to+oug+jade/data=!4m6!4m5!1m1!4e2!1m2!1m1!1s0x31cc4a581edeb9f9:0xd2817e62b1ebd60c?sa=X&ved=2ahUKEwidmrS3lvH9AhU0T2wGHaAwBqAQ9Rd6BAgyEAU" target="_blank"><img :src="appBtnGMapSrc" alt="" /></a>
         <span>Google Maps</span>
       </div>
-      <!-- <div class="wed-car">
-        <img src="../assets/img/wedding-car.png" alt="" />
-      </div> -->
+      <!-- e -->
     </div>
   </v-container>
 
