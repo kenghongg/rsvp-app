@@ -23,12 +23,13 @@
 <script>
 import music01 from "../assets/music/music-01.mp3";
 import music02 from "../assets/music/music-02.mp3";
+import music03 from "../assets/music/music-03.mp3";
 
 export default {
   data() {
     return {
       musicOn: false,
-      musicSrc: music02,
+      musicSrc: music03,
       isLayerVisible: true,
     };
   },
@@ -107,6 +108,7 @@ export default {
   position: fixed;
   top: 16px;
   right: 16px;
+  z-index: 999;
   .music-btn {
     // background: salmon;
     background: rgba(95, 2, 2, 0.3);

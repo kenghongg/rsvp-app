@@ -7,10 +7,31 @@
   ></div>
 
   <v-container class="restaurant-info-container">
-    <p class="text-center font-weight-bold mb-2">
-      华联斐翠酒家 <br />OUG Jade Restaurant
-    </p>
-    <p class="text-center">
+    <div class="restaurant-logo">
+      <img src="../assets/img/restaurant-logo.jpg" alt="" />
+    </div>
+    <div class="text-center mb-2 d-flex align-center w-100">
+      <div class="restaurant-divider">
+        <v-divider :thickness="6" color="#784705"></v-divider>
+        <br />
+        <v-divider :thickness="6" color="#784705" class="w-50"></v-divider>
+      </div>
+      <div class="restaurant-name">
+        <div class="txt-cn font-weight-bold text-h5">華聯斐翠酒家</div>
+        <div class="font-weight-bold">OUG Jade Restaurant</div>
+      </div>
+      <div class="restaurant-divider">
+        <v-divider
+          :thickness="6"
+          color="#784705"
+          class="w-50 ml-auto"
+        ></v-divider>
+        <br />
+        <v-divider :thickness="6" color="#784705"></v-divider>
+      </div>
+    </div>
+
+    <p class="text-center para-address">
       2nd Floor The Market Place,
       <br />2, Jalan Hujan Rahmat, Taman Overseas Union, <br />58200 Kuala
       Lumpur, Malaysia
@@ -24,6 +45,9 @@
       <div class="nav-btn">
         <a href="#"><img :src="appBtnGMapSrc" alt="" /></a>
         <span>Google Maps</span>
+      </div>
+      <div class="wed-car">
+        <img src="../assets/img/wedding-car.png" alt="" />
       </div>
     </div>
   </v-container>
@@ -99,7 +123,46 @@ export default {
   // margin-top: -40px;
 }
 
+.restaurant-logo {
+  margin-bottom: 12px;
+  margin-top: -60px;
+  img {
+    display: block;
+    width: 100%;
+    max-width: 100px;
+    margin: auto;
+  }
+}
+
+.restaurant-name {
+  width: 100%;
+  flex-shrink: 1;
+  min-width: 230px;
+  // color: #784705;
+  color: #215220;
+}
+
+.restaurant-divider {
+  // padding: 0 32px;
+  // margin-bottom: 24px;
+  width: 100%;
+  flex-shrink: 1;
+}
+
+.para-address {
+  font-size: 0.8rem;
+  color: #2d2d2d;
+}
+
+.wed-car {
+  width: 110px;
+  position: absolute;
+  right: calc(50% - 240px);
+  bottom: -30px;
+}
+
 .nav-btn-container {
+  position: relative;
   display: flex;
   justify-content: center;
   margin-top: 24px;
@@ -112,15 +175,16 @@ export default {
     align-items: center;
 
     a {
-      width: 72px;
+      width: 56px;
       display: flex;
+
       box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.3),
         0 1px 3px 1px rgba(60, 64, 67, 0.15);
       border-radius: 22%;
     }
     span {
       margin-top: 4px;
-      font-size: 80%;
+      font-size: 0.7rem;
     }
   }
 

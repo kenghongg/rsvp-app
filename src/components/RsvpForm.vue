@@ -8,7 +8,7 @@
           label="姓名 | Name"
           prepend-inner-icon="mdi-account"
           variant="outlined"
-          color="#043b85"
+          color="#784705"
         ></v-text-field>
 
         <v-text-field
@@ -17,7 +17,7 @@
           label="电话号码 | Phone Number"
           prepend-inner-icon="mdi-phone"
           variant="outlined"
-          color="#043b85"
+          color="#784705"
         ></v-text-field>
 
         <div>
@@ -47,7 +47,7 @@
                 prepend-icon="mdi-plus"
                 v-bind="props"
                 variant="outlined"
-                color="#043b85"
+                color="#784705"
                 class="text-right"
                 size="large"
                 >添加嘉宾 | Add Guest</v-btn
@@ -55,34 +55,30 @@
             </template>
             <v-card>
               <v-card-text>
-                <v-container>
-                  <v-row>
-                    <v-col cols="12">
-                      <v-text-field
-                        label="嘉賓姓名 | Guest Name"
-                        v-model="newGuestName"
-                        required
-                        prepend-inner-icon="mdi-account"
-                        variant="outlined"
-                        color="#043b85"
-                      ></v-text-field>
-                    </v-col>
-                  </v-row>
-                </v-container>
+                <v-text-field
+                  label="嘉賓姓名 | Guest Name"
+                  v-model="newGuestName"
+                  required
+                  prepend-inner-icon="mdi-account"
+                  variant="outlined"
+                  color="#784705"
+                ></v-text-field>
               </v-card-text>
-              <v-card-actions>
-                <v-spacer></v-spacer>
-                <v-btn
-                  color="grey-darken-1"
-                  variant="text"
-                  @click="dialog = false"
-                >
-                  Close
-                </v-btn>
-                <v-btn color="blue-darken-1" variant="flat" @click="addGuest">
-                  确定 | Conlanfirm
-                </v-btn>
-              </v-card-actions>
+              <v-container>
+                <v-card-actions>
+                  <v-spacer></v-spacer>
+                  <v-btn
+                    color="grey-darken-1"
+                    variant="text"
+                    @click="dialog = false"
+                  >
+                    Close
+                  </v-btn>
+                  <v-btn color="blue-darken-1" variant="flat" @click="addGuest">
+                    确定 | Conlanfirm
+                  </v-btn>
+                </v-card-actions>
+              </v-container>
             </v-card>
           </v-dialog>
         </div>
@@ -93,7 +89,7 @@
 
         <v-btn
           variant="flat"
-          color="#043b85"
+          color="#784705"
           text-color="white"
           :style="{ color: 'white' }"
           append-icon="mdi-send"
