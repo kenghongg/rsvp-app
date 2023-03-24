@@ -14,6 +14,7 @@
     "@ohmygodvt95/vue3-pikaday": "^1.0.0",
     "@vuepic/vue-datepicker": "^4.2.1",
     "core-js": "^3.8.3",
+    "firebase": "^9.18.0",
     "leaflet": "^1.9.3",
     "map-promisified": "^0.4.0",
     "mapbox-gl": "^2.13.0",

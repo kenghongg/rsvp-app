@@ -88,7 +88,7 @@ export default {
     // Pause music when the user switches to another tab
     document.addEventListener("visibilitychange", this.handleVisibilityChange);
     // this.musicOn = true;
-    this.$refs.music.play();
+    // this.$refs.music.play();
     // Play music if the user interacts with the document
     // document.addEventListener("click", () => {
     //   if (!this.musicOn) {
