@@ -29,7 +29,7 @@ export default {
   data() {
     return {
       musicOn: false,
-      musicSrc: '',
+      musicSrc: "",
       isLayerVisible: true,
       musicSources: [music01, music02, music03],
     };
@@ -40,19 +40,25 @@ export default {
       this.musicSrc = this.musicSources[randomIndex];
     },
     toggleMusic() {
+      let playMusic = this.$refs.music.play();
+      let pauseMusic = this.$refs.music.pause();
+
       this.musicOn = !this.musicOn;
       if (this.musicOn) {
-        this.$refs.music.play();
+        playMusic;
       } else {
-        this.$refs.music.pause();
+        pauseMusic;
       }
     },
     handleVisibilityChange() {
+      let playMusic = this.$refs.music.play();
+      let pauseMusic = this.$refs.music.pause();
+
       if (document.hidden) {
-        this.$refs.music.pause();
+        pauseMusic;
       } else {
         if (this.musicOn) {
-          this.$refs.music.play();
+          playMusic;
         }
       }
     },
@@ -84,7 +90,7 @@ export default {
   },
   mounted() {
     this.playRandomMusic();
-    
+
     // Pause music when the user switches to another tab
     document.addEventListener("visibilitychange", this.handleVisibilityChange);
     // this.musicOn = true;
