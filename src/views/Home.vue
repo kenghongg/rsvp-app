@@ -10,15 +10,17 @@
   <!-- <CalendarView /> -->
 
   <CalendarShow />
-  <TimelineShow />
+  <!-- <TimelineShow /> -->
   <!-- <EventTimeline /> -->
 
   <RsvpForm />
   <!-- <MapShow /> -->
+  <BottomNavigation />
 </template>
 
 <script setup>
 // import HelloWorld from '@/components/HelloWorld.vue'
+import BottomNavigation from "@/components/BottomNavigation.vue";
 import CountdownTimer from "@/components/CountdownTimer.vue";
 import CalendarView from "@/components/CalendarView.vue";
 import ImageSet from "@/components/ImageSet.vue";

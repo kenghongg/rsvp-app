@@ -10,8 +10,6 @@ import vuetify from "./vuetify";
 import router from "../router";
 import VueCountdown from "@chenfengyuan/vue-countdown";
 import Countdown from "vue3-flip-countdown";
-import Mapbox from "vue-mapbox";
-import MapboxGl from "mapbox-gl";
 // import { promisifyMap } from 'map-promisified';
 
 // import VueDatePicker from '@vuepic/vue-datepicker';
@@ -23,11 +21,6 @@ export function registerPlugins(app) {
   app.use(vuetify).use(router).use(Countdown);
   app
     .use(TroisJSVuePlugin)
-    .use(Mapbox, {
-      accessToken:
-        "pk.eyJ1Ijoia2VuZ2hvbmdnIiwiYSI6ImNsZmJ2MXNlZjM0M2YzeHIwNG81aGl4MngifQ.fMjnFr8f_5RPIEfDF7swsg",
-      mapboxGl: MapboxGl,
-    })
     // .component('VueDatePicker', VueDatePicker)
     // .use(VPikaday)
     .component(VueCountdown.name, VueCountdown);

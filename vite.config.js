@@ -1,10 +1,9 @@
 // Plugins
 import vue from '@vitejs/plugin-vue'
-import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
-
+import { fileURLToPath, URL } from 'node:url'
 // Utilities
 import { defineConfig } from 'vite'
-import { fileURLToPath, URL } from 'node:url'
+import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -36,6 +35,6 @@ export default defineConfig({
     ],
   },
   server: {
-    port: 3000,
+    port: 4000,
   },
 })

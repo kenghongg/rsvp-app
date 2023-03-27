@@ -37,7 +37,7 @@
       Lumpur, Malaysia
     </p>
 
-    <div class="nav-btn-container">
+    <!-- <div class="nav-btn-container">
       <div class="nav-btn">
         <a href="https://www.waze.com/live-map/directions/my/wilayah-persekutuan-kuala-lumpur/kuala-lumpur/oug-jade-restaurant?to=place.ChIJ-bneHlhKzDERDNbrsWJ-gdI" target="_blank"><img :src="appBtnWazeSrc" alt="" /></a>
         <span>Waze</span>
@@ -46,7 +46,39 @@
         <a href="https://www.google.com/maps/dir//google+maps+to+oug+jade/data=!4m6!4m5!1m1!4e2!1m2!1m1!1s0x31cc4a581edeb9f9:0xd2817e62b1ebd60c?sa=X&ved=2ahUKEwidmrS3lvH9AhU0T2wGHaAwBqAQ9Rd6BAgyEAU" target="_blank"><img :src="appBtnGMapSrc" alt="" /></a>
         <span>Google Maps</span>
       </div>
-      <!-- e -->
+    </div> -->
+    <div class="map-action" max-width="sm">
+      <v-divider :thickness="6" color="#784705"></v-divider>
+
+      <div style="text-align: center">
+        <v-btn
+          href="https://goo.gl/maps/eoRoRv1nTjcdKkKQ7"
+          target="_blank"
+          variant="flat"
+          color="#efeae6"
+          :style="{ color: '#784704', marginBottom: '4px' }"
+          size="large"
+          icon
+        >
+          <v-icon>mdi-google-maps</v-icon>
+        </v-btn>
+        <span>Google&nbsp;Maps</span>
+      </div>
+
+      <div style="text-align: center">
+        <v-btn
+          href="https://ul.waze.com/ul?place=ChIJ-bneHlhKzDERDNbrsWJ-gdI&ll=3.07394490%2C101.67284230&navigate=yes&utm_campaign=default&utm_source=waze_website&utm_medium=lm_share_location"
+          target="_blank"
+          variant="flat"
+          color="#efeae6"
+          :style="{ color: '#784704', marginBottom: '4px' }"
+          size="large"
+          icon
+        >
+          <v-icon>mdi-waze</v-icon>
+        </v-btn>
+        <span>Waze</span>
+      </div>
     </div>
   </v-container>
 
@@ -157,6 +189,21 @@ export default {
   position: absolute;
   right: calc(50% - 240px);
   bottom: -30px;
+}
+
+.map-action {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #784704;
+  // font-weight: 700;
+  gap: 16px;
+  font-size: 14px;
+  margin-top: 16px;
+
+  .action-detail {
+    min-width: 160px;
+  }
 }
 
 .nav-btn-container {

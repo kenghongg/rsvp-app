@@ -3,13 +3,12 @@
     class="deactive-layer"
     v-if="isLayerVisible"
     @touchstart="handleLayerChange"
-    @click="handleLayerChange"
   ></div>
   <div class="music-btn-wrap">
     <!-- <v-btn @click="toggleMusic">{{ musicOn ? "Off" : "On" }}</v-btn> -->
     <!-- <v-btn icon="mdi-music" @click="toggleMusic"></v-btn> -->
     <v-btn
-      :icon="musicOn ? 'mdi-music-note' : 'mdi-music-note-off'"
+      :icon="musicOn ? 'mdi-music' : 'mdi-music-off'"
       @click="toggleMusic"
       :class="{ spin: musicOn }"
       size="small"
@@ -24,14 +23,15 @@
 import music01 from "../assets/music/music-01.mp3";
 import music02 from "../assets/music/music-02.mp3";
 import music03 from "../assets/music/music-03.mp3";
+import music04 from "../assets/music/music-04.mp3";
 
 export default {
   data() {
     return {
       musicOn: false,
-      musicSrc: '',
+      musicSrc: "",
       isLayerVisible: true,
-      musicSources: [music01, music02, music03],
+      musicSources: [music01, music02, music03, music04],
     };
   },
   methods: {
@@ -84,7 +84,7 @@ export default {
   },
   mounted() {
     this.playRandomMusic();
-    
+
     // Pause music when the user switches to another tab
     document.addEventListener("visibilitychange", this.handleVisibilityChange);
     // this.musicOn = true;
@@ -115,7 +115,7 @@ export default {
   position: fixed;
   top: 16px;
   right: 16px;
-  z-index: 999;
+  z-index: 998;
   .music-btn {
     // background: salmon;
     background: rgba(95, 2, 2, 0.3);
@@ -126,12 +126,13 @@ export default {
 
 .deactive-layer {
   background: salmon;
-  opacity: 0;
+  opacity: 0.1;
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
+  z-index: 999;
 }
 .spin {
   animation-name: spin;

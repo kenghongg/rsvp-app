@@ -89,6 +89,7 @@
     <!-- <v-divider vertical :thickness="6" color="#784705"></v-divider> -->
 
     <v-btn
+      @click.prevent="addToCalendar"
       variant="flat"
       color="#efeae6"
       :style="{ color: '#784704' }"
@@ -99,6 +100,47 @@
     </v-btn>
   </v-container>
 </template>
+
+<script>
+export default {
+  methods: {
+    addToCalendar() {
+      const startDate = new Date("2023-04-01T18:00:00"); // Replace with your start date and time
+      const endDate = new Date("2023-04-01T22:30:00"); // Replace with your end date and time
+      const title = "Keng Hong and Joey | Wedding at OUG Jade Restaurant"; // Replace with your event title
+      const description =
+        "Join us for a night of celebration at our wedding dinner! We can't wait to share this special moment with you and honor our families and heritage!"; // Replace with your event description
+      const location =
+        "OUG Jade Restaurant, 2, Jalan Hujan Rahmat, Taman Overseas Union, 58200 Kuala Lumpur, Wilayah Persekutuan Kuala Lumpur, Malaysia"; // Replace with your event location
+      const calendarUrl = `https://www.google.com/calendar/render?action=TEMPLATE&dates=${startDate.toISOString()}/${endDate.toISOString()}&location=${encodeURIComponent(
+        location
+      )}&text=${encodeURIComponent(title)}&details=${encodeURIComponent(
+        description
+      )}`;
+
+      // Detect the user's operating system
+      const userAgent = window.navigator.userAgent;
+      const isMac = /Macintosh/.test(userAgent);
+      const isWindows = /Windows/.test(userAgent);
+
+      // Open the appropriate calendar application
+      if (isMac) {
+        window.location.href = `ical://event?start=${startDate.toISOString()}&end=${endDate.toISOString()}&location=${encodeURIComponent(
+          location
+        )}&summary=${encodeURIComponent(
+          title
+        )}&description=${encodeURIComponent(description)}`;
+      } else if (isWindows) {
+        window.open(
+          `outlookcal:${startDate.toISOString()} /${endDate.toISOString()} /${title} /${description} /${location}`
+        );
+      } else {
+        window.open(calendarUrl, "_blank");
+      }
+    },
+  },
+};
+</script>
 
 <style lang="scss" scoped>
 .flip-clock__slot {
