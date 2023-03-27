@@ -14,10 +14,7 @@
           <span style="letter-spacing: 0.6px; display: block">Guest</span>
         </v-btn>
 
-        <v-btn
-          href="https://ul.waze.com/ul?place=ChIJ-bneHlhKzDERDNbrsWJ-gdI&ll=3.07394490%2C101.67284230&navigate=yes&utm_campaign=default&utm_source=waze_website&utm_medium=lm_share_location"
-          target="_blank"
-        >
+        <v-btn @click="openWaze">
           <v-icon>mdi-waze</v-icon>
           <span style="letter-spacing: 0.6px; display: block">Venue</span>
         </v-btn>
@@ -72,6 +69,13 @@ export default {
       } else {
         window.open(calendarUrl, "_blank");
       }
+    },
+    openWaze() {
+      // Create the custom URL scheme for the Waze app
+      const url = `https://www.waze.com/ul?place=ChIJ-bneHlhKzDERDNbrsWJ-gdI&ll=3.07394490%2C101.67284230&navigate=yes&utm_campaign=default&utm_source=waze_website&utm_medium=lm_share_location`;
+
+      // Open the URL in a new window or tab
+      window.open(url, "_blank");
     },
   },
 };

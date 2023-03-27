@@ -52,8 +52,7 @@
 
       <div style="text-align: center">
         <v-btn
-          href="https://goo.gl/maps/eoRoRv1nTjcdKkKQ7"
-          target="_blank"
+          @click="openGoogleMaps"
           variant="flat"
           color="#efeae6"
           :style="{ color: '#784704', marginBottom: '4px' }"
@@ -67,8 +66,7 @@
 
       <div style="text-align: center">
         <v-btn
-          href="https://ul.waze.com/ul?place=ChIJ-bneHlhKzDERDNbrsWJ-gdI&ll=3.07394490%2C101.67284230&navigate=yes&utm_campaign=default&utm_source=waze_website&utm_medium=lm_share_location"
-          target="_blank"
+          @click="openWaze"
           variant="flat"
           color="#efeae6"
           :style="{ color: '#784704', marginBottom: '4px' }"
@@ -110,6 +108,22 @@ export default {
       appBtnWazeSrc: appBtnWaze,
       appBtnGMapSrc: appBtnGMap,
     };
+  },
+  methods: {
+    openWaze() {
+      // Create the custom URL scheme for the Waze app
+      const url = `https://www.waze.com/ul?place=ChIJ-bneHlhKzDERDNbrsWJ-gdI&ll=3.07394490%2C101.67284230&navigate=yes&utm_campaign=default&utm_source=waze_website&utm_medium=lm_share_location`;
+
+      // Open the URL in a new window or tab
+      window.open(url, "_blank");
+    },
+    openGoogleMaps() {
+      // Create the custom URL scheme for the Waze app
+      const url = `https://goo.gl/maps/eoRoRv1nTjcdKkKQ7`;
+
+      // Open the URL in a new window or tab
+      window.open(url, "_blank");
+    },
   },
 };
 </script>
