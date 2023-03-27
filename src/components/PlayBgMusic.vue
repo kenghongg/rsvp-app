@@ -126,7 +126,7 @@ export default {
 
 .deactive-layer {
   background: salmon;
-  opacity: 0.1;
+  opacity: 0;
   position: fixed;
   top: 0;
   left: 0;
