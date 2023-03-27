@@ -22,6 +22,36 @@
               color="#784705"
             ></v-text-field>
 
+            <!-- <v-radio-group v-model="isAttending">
+              <v-radio label="Yes" value="true"></v-radio>
+              <v-radio label="No" value="false"></v-radio>
+            </v-radio-group> -->
+
+            <v-radio-group
+              v-model="radioAttend.value"
+              :error-messages="radioAttend.errorMessage.value"
+              style="margin-bottom: -12px"
+            >
+              <v-radio
+                label="出席 | Attending"
+                value="yes"
+                color="#784705"
+              ></v-radio>
+              <v-radio
+                label="无法出席 | Not Attending"
+                value="no"
+                color="#784705"
+              ></v-radio>
+            </v-radio-group>
+
+            <!-- {{ radioAttend.value }} -->
+
+            <!-- <v-checkbox
+              v-model="isAttending"
+              label="我会出席 | I am attending"
+              color="#784705"
+            ></v-checkbox> -->
+
             <div>
               <div v-if="guestList.length > 0" class="guest-list-container">
                 <div class="added-guest-title">嘉宾 | Guest(s)</div>
@@ -29,9 +59,16 @@
                 <v-list>
                   <v-list-item v-for="(guest, index) in guestList" :key="index">
                     <v-list-item-content class="d-flex align-content-center">
-                      <!-- <span class="mr-2">#{{index + 1}}</span> -->
+                      <span class="mr-2 w-25">#{{ index + 1 }}</span>
                       <v-avatar color="brown-darken-4">
-                        <span>{{ guest.slice(0, 2) }}</span>
+                        <!-- <span>{{ guest.slice(0, 2) }}</span> -->
+                        <span>{{
+                          guest
+                            .split(" ")
+                            .map((word) => word.charAt(0))
+                            .join("")
+                            .slice(0, 2)
+                        }}</span>
                       </v-avatar>
                       <span class="w-100 pl-2 align-self-center">{{
                         guest
@@ -48,6 +85,7 @@
               <v-dialog v-model="dialog" persistent width="1024">
                 <template v-slot:activator="{ props }">
                   <v-btn
+                    v-if="radioAttend.value === 'yes'"
                     prepend-icon="mdi-plus"
                     v-bind="props"
                     variant="outlined"
@@ -95,7 +133,6 @@
             </div>
 
             <!-- <div style="padding: 12px"></div> -->
-
             <!-- <v-btn @click="handleReset"> clear </v-btn> -->
 
             <v-btn
@@ -105,7 +142,7 @@
               :style="{ color: 'white' }"
               append-icon="mdi-send"
               size="x-large"
-              class="d-flex justify-content-end w-100 mt-6"
+              class="d-flex justify-content-end w-100 mt-3"
               type="submit"
             >
               提交 | Submit
@@ -132,6 +169,7 @@ export default {
       dialog: false,
       newGuestName: "",
       guestList: guestList,
+      isAttending: "",
     };
   },
   methods: {
@@ -160,11 +198,16 @@ export default {
           if (value?.length > 7 && /[0-9-]+/.test(value)) return true;
           return "Phone number needs to be at least 8 digits.";
         },
+        radioAttend(value) {
+          if (value) return true;
+          return "Select whether you are attending.";
+        },
       },
     });
 
     const name = useField("name");
     const phone = useField("phone");
+    const radioAttend = useField("radioAttend");
 
     const submit = handleSubmit((values) => {
       const now = new Date();
@@ -175,6 +218,7 @@ export default {
     return {
       name,
       phone,
+      radioAttend,
       // email,
       submit,
       handleReset,
@@ -197,6 +241,10 @@ body {
     margin-bottom: 16px;
     border: 1px solid #999999;
     padding: 4px 0px;
+
+    .v-list {
+      background: transparent;
+    }
   }
 
   .added-guest-title {
