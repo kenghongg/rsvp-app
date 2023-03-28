@@ -3,6 +3,7 @@
     class="deactive-layer"
     v-if="isLayerVisible"
     @touchstart="handleLayerChange"
+    @click="handleLayerChange"
   ></div>
   <div class="music-btn-wrap">
     <!-- <v-btn @click="toggleMusic">{{ musicOn ? "Off" : "On" }}</v-btn> -->
