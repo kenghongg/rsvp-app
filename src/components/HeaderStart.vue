@@ -24,7 +24,6 @@
 
     <div class="wedding-invitation text-center txt-cn">婚禮邀請函</div>
 
-  
     <!-- <v-img
       class="letter-quote-invitation"
       :width="'100%'"

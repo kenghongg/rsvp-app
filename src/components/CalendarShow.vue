@@ -82,8 +82,8 @@
     <v-divider :thickness="6" color="#784705"></v-divider>
 
     <div class="text-right date-detail">
-      <div class="txt-cn">農曆冬月初四</div>
-      <div>2023・12・16 - 6:00pm</div>
+      <div class="txt-cn">農曆冬月初四 (星期六)</div>
+      <div>2023・12・16 (Sat) - 6:00pm</div>
     </div>
 
     <!-- <v-divider vertical :thickness="6" color="#784705"></v-divider> -->
@@ -165,7 +165,7 @@ export default {
   font-size: 14px;
 
   .date-detail {
-    min-width: 160px;
+    min-width: 230px;
   }
 
   .txt-cn {

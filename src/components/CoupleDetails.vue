@@ -4,12 +4,13 @@
       <div class="couple-content">
         <div class="couple-img">
           <img
-            src="../assets/img/wedding-top.png"
+            src="../assets/img/couple-groom-img.png"
             style="background: #2d2d2d; border-radius: 50%"
           />
         </div>
         <div class="couple-details">
-          <!-- <div class="txt-cn">新浪：呵呵呵</div> -->
+          <div class="txt-cn"><i>新郎</i> | 景航</div>
+          <div class="txt-en"><i>The Groom</i> - Keng Hong</div>
         </div>
         <div class="couple-contact">
           <v-btn
@@ -20,18 +21,21 @@
             href="https://wa.me/6582275922"
             target="_blank"
             size="small"
-            >Keng Hong</v-btn
+            >/ Contact Him</v-btn
           >
         </div>
       </div>
       <div class="couple-content">
         <div class="couple-img">
           <img
-            src="../assets/img/wedding-top.png"
+            src="../assets/img/couple-bride-img.png"
             style="background: #2d2d2d; border-radius: 50%"
           />
         </div>
-        <div class="couple-details"></div>
+        <div class="couple-details">
+          <div class="txt-cn"><i>新娘</i> | 祖儿</div>
+          <div class="txt-en"><i>The Bride</i> - Joey</div>
+        </div>
         <div class="couple-contact">
           <v-btn
             rounded="pill"
@@ -41,7 +45,7 @@
             href="https://wa.me/6582275922"
             target="_blank"
             size="small"
-            >Joey</v-btn
+            >/ Contact Her</v-btn
           >
         </div>
       </div>
@@ -54,6 +58,9 @@
   display: flex;
   justify-content: center;
   gap: 24px;
+  width: 100%;
+  max-width: 400px;
+  margin: auto;
 }
 
 .couple-contact {
@@ -61,9 +68,37 @@
 }
 
 .couple-img {
+  padding: 6px;
+  background: #af754f;
+  border-radius: 50%;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+
   img {
     display: block;
     width: 100%;
   }
+}
+
+.couple-details {
+  text-align: center;
+  margin-top: 8px;
+
+  i {
+    font-size: 80%;
+  }
+
+  .txt-cn {
+    font-size: 1.35rem;
+    font-weight: 400;
+  }
+
+  .txt-en {
+    margin-top: 8px;
+    font-size: 0.8rem;
+  }
+}
+
+.couple-contact {
+  text-align: center;
 }
 </style>

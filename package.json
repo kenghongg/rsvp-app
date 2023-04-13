@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "vite",
+    "dev-expose": "vite --host",
     "build": "vite build",
     "preview": "vite preview",
     "lint": "eslint . --fix --ignore-path .gitignore"
@@ -18,7 +19,6 @@
     "firebase": "^9.18.0",
     "leaflet": "^1.9.3",
     "map-promisified": "^0.4.0",
-    "mapbox-gl": "^2.13.0",
     "roboto-fontface": "*",
     "three": "0.134",
     "troisjs": "^0.3.4",
@@ -26,7 +26,6 @@
     "vue": "3",
     "vue-cal": "^4.8.1",
     "vue-countdown": "^1.0.4",
-    "vue-mapbox": "^0.4.1",
     "vue-meta": "^2.4.0",
     "vue-router": "^4.0.0",
     "vue3-flip-countdown": "^0.1.6",

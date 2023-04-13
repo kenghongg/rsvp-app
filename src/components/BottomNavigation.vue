@@ -9,10 +9,10 @@
           backdrop-filter: blur(16px);
         "
       >
-        <v-btn>
+        <!-- <v-btn>
           <v-icon>mdi-account</v-icon>
           <span style="letter-spacing: 0.6px; display: block">Guest</span>
-        </v-btn>
+        </v-btn> -->
 
         <v-btn @click="openWaze">
           <v-icon>mdi-waze</v-icon>

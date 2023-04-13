@@ -33,8 +33,8 @@ export default {
       musicOn: false,
       musicSrc: "",
       isLayerVisible: true,
-      // musicSources: [music01, music02, music03, music04, music05],
-      musicSources: [music05],
+      musicSources: [music01, music02, music03, music04, music05],
+      // musicSources: [music02],
     };
   },
   methods: {
