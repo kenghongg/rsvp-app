@@ -23,6 +23,7 @@
           <th>Phone</th>
           <th>Attending</th>
           <th>Guest</th>
+          <th>Submit Time</th>
         </tr>
       </thead>
       <tbody>
@@ -30,8 +31,9 @@
           <td>{{ submission.name }}</td>
           <td>{{ submission.name }}</td>
           <td>{{ submission.phone }}</td>
-          <td>{{ submission.radioAttend ? 'Yes' : 'No' }}</td>
+          <td>{{ submission.radioAttend }}</td>
           <td>{{ submission.guestList }}</td>
+          <td>{{ formatDate(submission.submissionTime) }}</td>
         </tr>
       </tbody>
     </v-table>
@@ -55,6 +57,25 @@ export default {
       id: doc.id,
       ...doc.data()
     }));
+
+    this.submissions.sort((a, b) => {
+      return new Date(b.submissionTime) - new Date(a.submissionTime);
+    });
+  },
+  methods: {
+    formatDate(dateString) {
+      const date = new Date(dateString);
+      const options = {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: false
+      };
+      return date.toLocaleString('en-GB', options).replace(',', ' |');
+    }
   }
 };
 </script>

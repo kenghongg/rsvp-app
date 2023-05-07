@@ -3,7 +3,7 @@
     <div class="form-wrap">
       <v-container>
         <v-responsive class="d-flex align-center">
-          <form @submit.prevent="submit" class="rsvp-form">
+          <form v-if="formVisible" @submit.prevent="submit" class="rsvp-form">
             <v-text-field v-model="name.value.value" :error-messages="name.errorMessage.value" label="姓名 | Name"
               prepend-inner-icon="mdi-account" variant="outlined" color="#784705"></v-text-field>
 
@@ -85,6 +85,10 @@
             <!-- <div style="height: 56px"></div> -->
           </form>
 
+          <div class="success-msg" v-else>
+            success message
+          </div>
+
           <v-snackbar v-model="snackbar.show" position="top" :color="snackbar.color">{{ snackbar.text }}</v-snackbar>
 
         </v-responsive>
@@ -110,6 +114,7 @@ export default {
       newGuestName: "",
       guestList: guestList,
       isAttending: "",
+      showSuccessMsg: false,
     };
   },
   methods: {
@@ -156,6 +161,7 @@ export default {
     const name = useField("name");
     const phone = useField("phone");
     const radioAttend = useField("radioAttend");
+    const formVisible = ref(true)
 
     const snackbar = ref({
       show: false,
@@ -179,6 +185,7 @@ export default {
         console.log("Submission added to Firebase!");
         showSnackbar('Form submitted successfully', 'success');
         handleReset();
+        formVisible.value = false;
       } catch (error) {
         console.error("Error adding submission to Firebase: ", error);
         showSnackbar('Form submission failed', 'error');
@@ -189,9 +196,11 @@ export default {
       name,
       phone,
       radioAttend,
+      formVisible,
       snackbar,
       showSnackbar,
       // formSnackbar,
+
       submit,
       handleReset,
     };
