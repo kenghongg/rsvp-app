@@ -11,24 +11,11 @@
               label="电话号码 | Phone Number" prepend-inner-icon="mdi-phone" variant="outlined"
               color="#784705"></v-text-field>
 
-            <!-- <v-radio-group v-model="isAttending">
-              <v-radio label="Yes" value="true"></v-radio>
-              <v-radio label="No" value="false"></v-radio>
-            </v-radio-group> -->
-
             <v-radio-group v-model="radioAttend.value" :error-messages="radioAttend.errorMessage.value"
               style="margin-bottom: -12px">
               <v-radio label="出席 | Attending" value="yes" color="#784705"></v-radio>
               <v-radio label="无法出席 | Not Attending" value="no" color="#784705"></v-radio>
             </v-radio-group>
-
-            <!-- {{ radioAttend.value }} -->
-
-            <!-- <v-checkbox
-              v-model="isAttending"
-              label="我会出席 | I am attending"
-              color="#784705"
-            ></v-checkbox> -->
 
             <div v-if="radioAttend.value === 'yes'">
               <div v-if="guestList.length > 0" class="guest-list-container">
@@ -139,6 +126,14 @@ export default {
     notAttending() {
       this.guestList = [];
     },
+    resetForm() {
+      // Reset form fields here
+      this.name.value.value = '';
+      this.phone.value.value = '';
+      this.radioAttend.value = '';
+      this.guestList = [];
+    },
+
   },
   setup() {
     const { handleSubmit, handleReset } = useForm({
@@ -183,6 +178,7 @@ export default {
         await addDoc(collection(db, "submissions"), values);
         console.log("Submission added to Firebase!");
         showSnackbar('Form submitted successfully', 'success');
+        handleReset();
       } catch (error) {
         console.error("Error adding submission to Firebase: ", error);
         showSnackbar('Form submission failed', 'error');
