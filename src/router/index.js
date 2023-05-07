@@ -16,6 +16,18 @@ const routes = [
       },
     ],
   },
+  {
+    path:'/registered',
+    component: () => import('@/layouts/default/Default.vue'),
+    children: [
+      {
+        path: '/registered',
+        name: 'Registered Guests',
+        component: () => import(/* webpackChunkName: "home" */ '@/views/RegisteredGuests.vue'),
+      }
+    ]
+
+  }
 ]
 
 const router = createRouter({

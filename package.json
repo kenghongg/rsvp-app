@@ -16,7 +16,7 @@
     "@vuepic/vue-datepicker": "^4.2.1",
     "@vueuse/head": "^1.1.23",
     "core-js": "^3.8.3",
-    "firebase": "^9.18.0",
+    "firebase": "^9.21.0",
     "leaflet": "^1.9.3",
     "map-promisified": "^0.4.0",
     "roboto-fontface": "*",

@@ -1,10 +1,5 @@
 <template>
-  <div
-    class="restaurant-img-bg"
-    :width="'100%'"
-    aspect-ratio="16/9"
-    cover
-  ></div>
+  <div class="restaurant-img-bg" :width="'100%'" aspect-ratio="16/9" cover></div>
 
   <v-container class="restaurant-info-container">
     <div class="restaurant-logo">
@@ -21,11 +16,7 @@
         <div class="font-weight-bold">OUG Jade Restaurant</div>
       </div>
       <div class="restaurant-divider">
-        <v-divider
-          :thickness="6"
-          color="#784705"
-          class="w-50 ml-auto"
-        ></v-divider>
+        <v-divider :thickness="6" color="#784705" class="w-50 ml-auto"></v-divider>
         <br />
         <v-divider :thickness="6" color="#784705"></v-divider>
       </div>
@@ -51,28 +42,16 @@
       <v-divider :thickness="6" color="#784705"></v-divider>
 
       <div style="text-align: center">
-        <v-btn
-          @click="openGoogleMaps"
-          variant="flat"
-          color="#efeae6"
-          :style="{ color: '#784704', marginBottom: '4px' }"
-          size="large"
-          icon
-        >
+        <v-btn @click="openGoogleMaps" variant="flat" color="#efeae6" :style="{ color: '#784704', marginBottom: '4px' }"
+          size="large" icon>
           <v-icon>mdi-google-maps</v-icon>
         </v-btn>
         <span>Google&nbsp;Maps</span>
       </div>
 
       <div style="text-align: center">
-        <v-btn
-          @click="openWaze"
-          variant="flat"
-          color="#efeae6"
-          :style="{ color: '#784704', marginBottom: '4px' }"
-          size="large"
-          icon
-        >
+        <v-btn @click="openWaze" variant="flat" color="#efeae6" :style="{ color: '#784704', marginBottom: '4px' }"
+          size="large" icon>
           <v-icon>mdi-waze</v-icon>
         </v-btn>
         <span>Waze</span>
@@ -136,6 +115,9 @@ export default {
 
 .restaurant-img-bg {
   margin-top: 40px;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 400px;
   width: 100%;
   height: 300px;
   background: url("../assets/img/restaurantMap.gif") center center;
@@ -150,26 +132,25 @@ export default {
   0% {
     background-position: right center;
   }
+
   50% {
     background-position: left center;
   }
+
   100% {
     background-position: right center;
   }
 }
 
 .restaurant-info-container {
-  // background: salmon;
-  // box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-  // margin-top: -24px;
   background: #ffffff;
   border-radius: 16px;
-  // margin-top: -40px;
 }
 
 .restaurant-logo {
   margin-bottom: 12px;
   margin-top: -60px;
+
   img {
     display: block;
     width: 100%;
@@ -241,6 +222,7 @@ export default {
         0 1px 3px 1px rgba(60, 64, 67, 0.15);
       border-radius: 22%;
     }
+
     span {
       margin-top: 4px;
       font-size: 0.7rem;
