@@ -48,13 +48,13 @@
           <img src="../assets/img/prewed-img-01.png" alt="" />
         </div>
         <div class="img-ver">
-          <img src="../assets/img/prewed-img-02.png" alt="" />
+          <img src="../assets/img/prewed-img-02.jpg" alt="" />
         </div>
         <div class="img-ver">
-          <img src="../assets/img/prewed-img-03.png" alt="" />
+          <img src="../assets/img/prewed-img-03.jpg" alt="" />
         </div>
         <div class="img-ver">
-          <img src="../assets/img/prewed-img-04.png" alt="" />
+          <img src="../assets/img/prewed-img-04.jpg" alt="" />
         </div>
       </div>
       <!-- <div class="w-100 d-flex mt-4 align-center">
