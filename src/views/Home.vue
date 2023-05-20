@@ -49,7 +49,6 @@ import TimelineShow from "@/components/TimelineShow.vue";
 import CoupleDetails from "@/components/CoupleDetails.vue";
 import LoadingScreen from "@/components/LoadingScreen.vue";
 
-
 export default {
   components: {
     LoadingScreen,
@@ -72,9 +71,13 @@ export default {
   },
   mounted() {
     // Simulate loading delay
-    setTimeout(() => {
+    // setTimeout(() => {
+    //   this.isLoading = false;
+    // }, 2000);
+
+    window.onload = () => {
       this.isLoading = false;
-    }, 2000);
+    };
   },
 };
 </script>
