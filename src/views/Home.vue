@@ -1,28 +1,34 @@
 <template>
   <!-- <HelloWorld /> -->
-  <PlayBgMusic />
-  <HeaderStart />
 
-  <ImageSet />
-  <InviteIntro />
-  <ContentIntro />
-  <ContentPreWed />
-  <CoupleDetails />
-  <MapAnimation />
+  <loading-screen v-if="isLoading"></loading-screen>
 
-  <!-- <CountdownTimer /> -->
-  <!-- <CalendarView /> -->
+  <div v-else>
+    <!-- Your main content here -->
+    <PlayBgMusic />
+    <HeaderStart />
 
-  <CalendarShow />
-  <!-- <TimelineShow /> -->
-  <!-- <EventTimeline /> -->
+    <ImageSet />
+    <InviteIntro />
+    <ContentIntro />
+    <ContentPreWed />
+    <CoupleDetails />
+    <MapAnimation />
 
-  <RsvpForm />
-  <!-- <MapShow /> -->
-  <BottomNavigation />
+    <!-- <CountdownTimer /> -->
+    <!-- <CalendarView /> -->
+
+    <CalendarShow />
+    <!-- <TimelineShow /> -->
+    <!-- <EventTimeline /> -->
+
+    <RsvpForm />
+    <!-- <MapShow /> -->
+    <BottomNavigation />
+  </div>
 </template>
 
-<script setup>
+<script>
 // import HelloWorld from '@/components/HelloWorld.vue'
 import BottomNavigation from "@/components/BottomNavigation.vue";
 import ContentPreWed from "@/components/ContentPreWed.vue";
@@ -41,4 +47,34 @@ import EventTimeline from "@/components/EventTimeline.vue";
 import TimelineShow from "@/components/TimelineShow.vue";
 
 import CoupleDetails from "@/components/CoupleDetails.vue";
+import LoadingScreen from "@/components/LoadingScreen.vue";
+
+
+export default {
+  components: {
+    LoadingScreen,
+    BottomNavigation,
+    ContentPreWed,
+    InviteIntro,
+    ContentIntro,
+    ImageSet,
+    RsvpForm,
+    PlayBgMusic,
+    MapAnimation,
+    CalendarShow,
+    HeaderStart,
+    CoupleDetails,
+  },
+  data() {
+    return {
+      isLoading: true,
+    };
+  },
+  mounted() {
+    // Simulate loading delay
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 2000);
+  },
+};
 </script>

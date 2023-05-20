@@ -80,6 +80,8 @@
 
   span {
     width: 100%;
+    white-space: nowrap;
+    margin: 8px 8px;
   }
 }
 
