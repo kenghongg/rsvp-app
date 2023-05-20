@@ -16,10 +16,13 @@
       </div>
     </div>
     <div class="invite-intro-container">
-      <div class="invite-txt">
-        Invite you to share joy at the <br />celebration of our marriage
-
-        <div class="txt-cn mt-1">邀請您在我們的婚禮慶典上分享喜悅</div>
+      <div class="invite-txt mt-3 text-center">
+        <div class="txt-cn mb-2">
+          我们将携双方父母真诚地邀请重要的亲人朋友 <br />到我们的婚禮慶典上
+          一起见证和分享喜悅
+        </div>
+        Together with our families joyfully invite you to join our wedding
+        celebration
       </div>
     </div>
     <div class="invite-intro-bottom-img">
@@ -45,6 +48,9 @@
   justify-content: center;
   align-items: center;
   gap: 24px;
+
+  max-width: 400px;
+  margin: auto;
 }
 
 .invite-txt {

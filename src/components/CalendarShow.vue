@@ -1,4 +1,18 @@
 <template>
+  <div class="pt-5 mt-5">
+    <div class="intro-container">
+      <div class="intro-txt">
+        <span class="txt-cn">我们的婚礼已经进入倒计时啦</span>
+        <div class="intro-sub-txt">
+          /&nbsp;&nbsp; Counting down to eternity  &nbsp;&nbsp;/
+        </div>
+        <div class="intro-rounded-icon">
+          <v-icon>mdi-circle</v-icon>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <v-container class="d-flex align-items-center">
     <div class="calendar-wrap">
       <div class="cal-header">
@@ -83,7 +97,7 @@
 
     <div class="text-right date-detail">
       <div class="txt-cn">農曆冬月初四 (星期六)</div>
-      <div>2023・12・16 (Sat) - 6:00pm</div>
+      <div>2023・12・16 (Sat) - 7:00pm</div>
     </div>
 
     <!-- <v-divider vertical :thickness="6" color="#784705"></v-divider> -->

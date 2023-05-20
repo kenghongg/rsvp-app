@@ -213,6 +213,11 @@ body {
   background: linear-gradient(180deg, #ffffff 100%, #eaf1f9 0%);
 }
 
+.form-wrap{
+  max-width:400px;
+  margin:auto;
+}
+
 .rsvp-form {
   padding-top: 16px;
 

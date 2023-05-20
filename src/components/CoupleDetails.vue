@@ -15,7 +15,7 @@
         <div class="couple-contact">
           <v-btn
             rounded="pill"
-            color="#24d366"
+            color="#b0764f"
             prepend-icon="mdi-whatsapp"
             style="color: white"
             href="https://wa.me/6582275922"
@@ -39,7 +39,7 @@
         <div class="couple-contact">
           <v-btn
             rounded="pill"
-            color="#24d366"
+            color="#b0764f"
             prepend-icon="mdi-whatsapp"
             style="color: white"
             href="https://wa.me/6582275922"
@@ -69,7 +69,7 @@
 
 .couple-img {
   padding: 6px;
-  background: #af754f;
+  background: rgba(175, 117, 79, 0.5);
   border-radius: 50%;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 

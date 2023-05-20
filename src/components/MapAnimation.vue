@@ -1,33 +1,25 @@
 <template>
-  <div class="restaurant-img-bg" :width="'100%'" aspect-ratio="16/9" cover></div>
-
   <v-container class="restaurant-info-container">
-    <div class="restaurant-logo">
-      <img src="../assets/img/restaurant-logo.jpg" alt="" />
-    </div>
-    <div class="text-center mb-2 d-flex align-center w-100">
-      <div class="restaurant-divider">
-        <v-divider :thickness="6" color="#784705"></v-divider>
-        <br />
-        <v-divider :thickness="6" color="#784705" class="w-50"></v-divider>
+    <div class="restaurant-info-bg">
+      <div
+        class="restaurant-img-bg"
+        :width="'100%'"
+        aspect-ratio="16/9"
+        cover
+      ></div>
+      <div class="text-center mt-5 mb-2 d-flex align-center w-100">
+        <div class="restaurant-name">
+          <div class="txt-cn font-weight-bold text-h5">華聯斐翠酒家</div>
+          <div class="font-weight-bold">OUG Jade Restaurant</div>
+        </div>
       </div>
-      <div class="restaurant-name">
-        <div class="txt-cn font-weight-bold text-h5">華聯斐翠酒家</div>
-        <div class="font-weight-bold">OUG Jade Restaurant</div>
-      </div>
-      <div class="restaurant-divider">
-        <v-divider :thickness="6" color="#784705" class="w-50 ml-auto"></v-divider>
-        <br />
-        <v-divider :thickness="6" color="#784705"></v-divider>
-      </div>
-    </div>
 
-    <p class="text-center para-address">
-      2nd Floor The Market Place,
-      <br />2, Jalan Hujan Rahmat, Taman Overseas Union, <br />58200 Kuala
-      Lumpur, Malaysia
-    </p>
-
+      <p class="text-center para-address">
+        2nd Floor The Market Place,
+        <br />2, Jalan Hujan Rahmat, Taman Overseas Union, <br />58200 Kuala
+        Lumpur, Malaysia
+      </p>
+    </div>
     <!-- <div class="nav-btn-container">
       <div class="nav-btn">
         <a href="https://www.waze.com/live-map/directions/my/wilayah-persekutuan-kuala-lumpur/kuala-lumpur/oug-jade-restaurant?to=place.ChIJ-bneHlhKzDERDNbrsWJ-gdI" target="_blank"><img :src="appBtnWazeSrc" alt="" /></a>
@@ -42,16 +34,28 @@
       <v-divider :thickness="6" color="#784705"></v-divider>
 
       <div style="text-align: center">
-        <v-btn @click="openGoogleMaps" variant="flat" color="#efeae6" :style="{ color: '#784704', marginBottom: '4px' }"
-          size="large" icon>
+        <v-btn
+          @click="openGoogleMaps"
+          variant="flat"
+          color="#efeae6"
+          :style="{ color: '#784704', marginBottom: '4px' }"
+          size="large"
+          icon
+        >
           <v-icon>mdi-google-maps</v-icon>
         </v-btn>
         <span>Google&nbsp;Maps</span>
       </div>
 
       <div style="text-align: center">
-        <v-btn @click="openWaze" variant="flat" color="#efeae6" :style="{ color: '#784704', marginBottom: '4px' }"
-          size="large" icon>
+        <v-btn
+          @click="openWaze"
+          variant="flat"
+          color="#efeae6"
+          :style="{ color: '#784704', marginBottom: '4px' }"
+          size="large"
+          icon
+        >
           <v-icon>mdi-waze</v-icon>
         </v-btn>
         <span>Waze</span>
@@ -114,7 +118,9 @@ export default {
 }
 
 .restaurant-img-bg {
-  margin-top: 40px;
+  margin-top: 20px;
+  border-top-right-radius: 16px;
+  border-top-left-radius: 16px;
   margin-left: auto;
   margin-right: auto;
   max-width: 400px;
@@ -142,9 +148,25 @@ export default {
   }
 }
 
+.restaurant-info-bg {
+  background: linear-gradient(
+    180deg,
+    rgba(120, 231, 255, 0) 80%,
+    rgba(120, 71, 5, 0.2) 101.77%
+  );
+
+  padding-top: 16px;
+  max-width: 400px;
+  margin: auto;
+  padding-bottom: 16px;
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+}
+
 .restaurant-info-container {
   background: #ffffff;
   border-radius: 16px;
+  padding-top: 0;
 }
 
 .restaurant-logo {
