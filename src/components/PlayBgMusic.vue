@@ -5,6 +5,70 @@
     @touchstart="handleLayerChange"
     @click="handleLayerChange"
   ></div>
+
+  <div v-if="isFirstTimer" @click="handleLayerChange" class="first-timer">
+    <!-- <div>Tap anywhere to start</div> -->
+    <div>
+      <div
+        class="wedding-invitation text-center"
+        style="
+          font-size: 1.4rem;
+          color: #784705;
+          text-align: center;
+          font-weight: 400;
+        "
+      >
+        WEDDING INVITATION
+      </div>
+
+      <div
+        class="wedding-date"
+        style="
+          font-size: 1rem;
+          color: #784705;
+          text-align: center;
+          font-weight: 900;
+          display: flex;
+          align-items: center;
+        "
+      >
+        <v-divider :thickness="6" color="#784705"></v-divider>
+        <span style="width: 100%; white-space: nowrap; margin: 8px 8px"
+          >2023・12・16</span
+        >
+        <v-divider :thickness="6" color="#784705"></v-divider>
+      </div>
+
+      <div
+        class="wedding-invitation text-center txt-cn"
+        style="
+          font-size: 1.4rem;
+          color: #784705;
+          text-align: center;
+          font-weight: 400;
+        "
+      >
+        婚禮邀請函
+      </div>
+    </div>
+
+    <div class="access-btn-container mt-5 pt-5">
+      <v-btn
+        rounded="pill"
+        color="#b0764f"
+        append-icon="mdi-chevron-right"
+        style="color: white"
+        size="large"
+        >/ 进入 | PROCEED</v-btn
+      >
+    </div>
+
+    <!-- <div>
+      <div v-if="isAndroid">Android</div>
+      <div v-if="isiOS">iOS</div>
+    </div> -->
+  </div>
+
   <div class="music-btn-wrap">
     <!-- <v-btn @click="toggleMusic">{{ musicOn ? "Off" : "On" }}</v-btn> -->
     <!-- <v-btn icon="mdi-music" @click="toggleMusic"></v-btn> -->
@@ -35,7 +99,25 @@ export default {
       isLayerVisible: true,
       musicSources: [music01, music02, music03, music04, music05],
       // musicSources: [music02],
+      isFirstTimer: false,
+      isAndroid: false,
+      isiOS: false,
     };
+  },
+  created() {
+    const lastVisit = localStorage.getItem("lastVisit");
+    const currentTime = Date.now();
+
+    if (lastVisit) {
+      if (currentTime - lastVisit >= 2 * 60 * 60 * 1000) {
+        this.isFirstTimer = true;
+        document.body.style.overflow = "hidden";
+      }
+    } else {
+      this.isFirstTimer = true;
+      document.body.style.overflow = "hidden";
+      localStorage.setItem("lastVisit", currentTime);
+    }
   },
   methods: {
     playRandomMusic() {
@@ -64,6 +146,8 @@ export default {
       this.musicOn = true;
       // this.musicOn = false;
       this.$refs.music.play();
+      this.isFirstTimer = false;
+      document.body.style.overflow = "auto";
     },
     // scrollToBottom() {
     //   // Set the scroll position to the bottom of the page
@@ -102,6 +186,16 @@ export default {
 
     // Scroll the page to the bottom on load
     // this.scrollToBottom();
+
+    const userAgent = navigator.userAgent.toLowerCase();
+
+    if (/android/.test(userAgent)) {
+      this.isAndroid = true;
+    } else if (/iphone|ipad|ipod/.test(userAgent)) {
+      this.isiOS = true;
+      this.isFirstTimer = false;
+      document.body.style.overflow = "auto";
+    }
   },
   beforeUnmount() {
     // Remove event listener when component is unmounted
@@ -120,7 +214,6 @@ export default {
   right: 16px;
   z-index: 998;
   .music-btn {
-    // background: salmon;
     background: rgba(95, 2, 2, 0.3);
     backdrop-filter: blur(12px);
     color: #ffffff;
@@ -135,8 +228,30 @@ export default {
   left: 0;
   width: 100vw;
   height: 100vh;
-  z-index: 999;
+  z-index: 998;
 }
+
+.first-timer {
+  /* background: teal; */
+  /* background:linear-gradient(#cd9473, #461e07); */
+  background: rgba(255, 255, 255, 0.3);
+  /* background: linear-gradient(rgba(205, 148, 115, 0.3), rgba(70, 30, 7, 0.2)); */
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  /* background: #ffffff; */
+  opacity: 1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1002;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
 .spin {
   animation-name: spin;
   animation-duration: 3s;

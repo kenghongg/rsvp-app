@@ -4,7 +4,7 @@
       <div class="intro-txt">
         <span class="txt-cn">我们的婚礼已经进入倒计时啦</span>
         <div class="intro-sub-txt">
-          /&nbsp;&nbsp; Counting down to eternity  &nbsp;&nbsp;/
+          /&nbsp;&nbsp; Counting down to forever  &nbsp;&nbsp;/
         </div>
         <div class="intro-rounded-icon">
           <v-icon>mdi-circle</v-icon>

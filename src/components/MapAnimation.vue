@@ -30,6 +30,25 @@
         <span>Google Maps</span>
       </div>
     </div> -->
+
+    <div class="mt-5 pt-5">
+      <div class="intro-container">
+        <div class="intro-txt">
+          <span class="txt-cn">好久不見， 婚禮見</span>
+          <div class="intro-sub-txt">
+            /&nbsp;&nbsp; Bless us with your presence &nbsp;&nbsp;/
+          </div>
+          <!-- <div class="intro-sub-txt">
+          /&nbsp;&nbsp; A journey to forever begins with a single step, let's
+          take it together. &nbsp;&nbsp;/
+        </div> -->
+          <div class="intro-rounded-icon">
+            <v-icon>mdi-circle</v-icon>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="map-action" max-width="sm">
       <v-divider :thickness="6" color="#784705"></v-divider>
 
@@ -216,7 +235,7 @@ export default {
   // font-weight: 700;
   gap: 16px;
   font-size: 14px;
-  margin-top: 16px;
+  margin-top: 24px;
 
   .action-detail {
     min-width: 160px;

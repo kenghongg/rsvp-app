@@ -6,8 +6,9 @@
   <ContentIntro />
   <ContentPreWed />
   <CoupleDetails />
-  <MapAnimation />
   <CalendarShow />
+  <MapAnimation />
+
   <RsvpForm />
   <BottomNavigation />
 </template>
