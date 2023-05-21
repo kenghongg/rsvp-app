@@ -19,7 +19,8 @@ export default {
     window.addEventListener("load", () => {
       setTimeout(() => {
         this.isLoading = false;
-      }, 20000);
+        console.log("loaded");
+      }, 2000);
     });
   },
 };
