@@ -5,30 +5,123 @@
       size="80"
       color="brown"
     ></v-progress-circular>
-
     <div>
-      <div class="wedding-invitation text-center mt-4">WEDDING INVITATION</div>
+      <div
+        class="wedding-invitation text-center mt-4"
+        style="
+          font-size: 1.4rem;
+          color: #784705;
+          text-align: center;
+          font-weight: 400;
+        "
+      >
+        WEDDING INVITATION
+      </div>
 
-      <div class="wedding-date">
+      <div
+        class="wedding-date"
+        style="
+          font-size: 1rem;
+          color: #784705;
+          text-align: center;
+          font-weight: 900;
+          display: flex;
+          align-items: center;
+        "
+      >
         <v-divider :thickness="6" color="#784705"></v-divider>
-        <span>2023・12・16</span>
+        <span style="width: 100%; white-space: nowrap; margin: 8px 8px"
+          >2023・12・16</span
+        >
         <v-divider :thickness="6" color="#784705"></v-divider>
       </div>
 
-      <div class="wedding-invitation text-center txt-cn">婚禮邀請函</div>
+      <div
+        class="wedding-invitation text-center txt-cn"
+        style="
+          font-size: 1.4rem;
+          color: #784705;
+          text-align: center;
+          font-weight: 400;
+        "
+      >
+        婚禮邀請函
+      </div>
 
-      <div class="invite-intro-container mt-5">
-        <div class="invite-intro-content">
+      <div
+        class="invite-intro-container mt-5"
+        style="
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 24px;
+
+          max-width: 400px;
+          margin: auto;
+        "
+      >
+        <div
+          class="invite-intro-content"
+          style="
+            line-height: 100%;
+            font-weight: 300;
+            font-size: 12px;
+            color: #784705;
+          "
+        >
           Keng Hong
-          <span class="txt-cn">景航</span>
+          <span
+            class="txt-cn"
+            style="
+              font-size: 24px;
+              /* padding-left: 12px; */
+              display: block;
+              padding-top: 10px;
+              font-style: normal;
+              font-weight: 400;
+            "
+            >景航</span
+          >
           <div class="invite-intro-details">
             <!-- <div class="txt-cn">新浪：呵呵呵</div> -->
           </div>
         </div>
-        <div class="invite-intro-content"><span class="amp">&amp;</span></div>
-        <div class="invite-intro-content">
+        <div
+          class="invite-intro-content"
+          style="
+            line-height: 100%;
+            font-weight: 300;
+            font-size: 12px;
+            color: #784705;
+          "
+        >
+          <span
+            class="amp"
+            style="font-size: 36px; line-height: 100%; font-weight: 200"
+            >&amp;</span
+          >
+        </div>
+        <div
+          class="invite-intro-content"
+          style="
+            line-height: 100%;
+            font-weight: 300;
+            font-size: 12px;
+            color: #784705;
+          "
+        >
           Joey
-          <span class="txt-cn">祖儿</span>
+          <span
+            class="txt-cn"
+            style="
+              font-size: 24px;
+              display: block;
+              padding-top: 10px;
+              font-style: normal;
+              font-weight: 400;
+            "
+            >祖儿</span
+          >
           <div class="invite-intro-details"></div>
         </div>
       </div>

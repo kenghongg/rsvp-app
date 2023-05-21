@@ -19,7 +19,7 @@ export default {
     window.addEventListener("load", () => {
       setTimeout(() => {
         this.isLoading = false;
-      }, 2000);
+      }, 20000);
     });
   },
 };
