@@ -1,6 +1,6 @@
 <template>
   <loading-screen v-if="isLoading"></loading-screen>
-  <div v-else><router-view /></div>
+  <router-view />
 </template>
 
 <script>
@@ -12,14 +12,14 @@ export default {
   },
   data() {
     return {
-      isLoading: false,
+      isLoading: true,
     };
   },
   mounted() {
-    this.isLoading = true;
     window.addEventListener("load", () => {
-      console.log("loaded");
-      this.isLoading = false;
+      setTimeout(() => {
+        this.isLoading = false;
+      }, 2000);
     });
   },
 };
