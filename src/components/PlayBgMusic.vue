@@ -195,6 +195,9 @@ export default {
       this.isiOS = true;
       this.isFirstTimer = false;
       document.body.style.overflow = "auto";
+    } else {
+      this.isFirstTimer = false;
+      document.body.style.overflow = "auto";
     }
   },
   beforeUnmount() {
