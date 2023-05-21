@@ -12,11 +12,11 @@ export default {
   },
   data() {
     return {
-      isLoading: true,
+      isLoading: false,
     };
   },
   mounted() {
-    // this.isLoading = false;
+    this.isLoading = true;
     window.addEventListener("load", () => {
       console.log("loaded");
       this.isLoading = false;
