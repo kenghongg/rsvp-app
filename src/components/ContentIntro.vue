@@ -16,6 +16,7 @@
       </div>
       <div class="intro-imgs">
         <div class="img-hori">
+          
           <img src="../assets/img/proposal-img-01.png" alt="" />
         </div>
         <div class="img-ver">
@@ -68,7 +69,7 @@
 
           <div class="d-flex align-center mt-3">
             <strong>2023・05・13</strong>
-            
+
             <span class="ml-1"
               ><img
                 src="../assets/img/signature-wedding.gif"

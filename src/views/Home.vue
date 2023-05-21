@@ -1,9 +1,9 @@
 <template>
   <!-- <HelloWorld /> -->
 
-  <loading-screen v-if="isLoading"></loading-screen>
+  <!-- <loading-screen v-if="isLoading"></loading-screen> -->
 
-  <div v-else>
+  <!-- <div v-else> -->
     <!-- Your main content here -->
     <PlayBgMusic />
     <HeaderStart />
@@ -25,7 +25,7 @@
     <RsvpForm />
     <!-- <MapShow /> -->
     <BottomNavigation />
-  </div>
+  <!-- </div> -->
 </template>
 
 <script>
@@ -51,7 +51,7 @@ import LoadingScreen from "@/components/LoadingScreen.vue";
 
 export default {
   components: {
-    LoadingScreen,
+    // LoadingScreen,
     BottomNavigation,
     ContentPreWed,
     InviteIntro,
@@ -74,10 +74,6 @@ export default {
     // setTimeout(() => {
     //   this.isLoading = false;
     // }, 2000);
-
-    window.onload = () => {
-      this.isLoading = false;
-    };
   },
 };
 </script>
