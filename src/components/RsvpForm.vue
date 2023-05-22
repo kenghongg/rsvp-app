@@ -11,8 +11,8 @@
         <v-responsive class="d-flex align-center">
           <form v-if="formVisible" @submit.prevent="submit" class="rsvp-form">
             <v-text-field
-              v-model="name.value.value"
-              :error-messages="name.errorMessage.value"
+              v-model="registeredBy.value.value"
+              :error-messages="registeredBy.errorMessage.value"
               label="姓名 | Name"
               prepend-inner-icon="mdi-account"
               variant="outlined"
@@ -244,7 +244,7 @@ export default {
     },
     resetForm() {
       // Reset form fields here
-      this.name.value.value = "";
+      this.registeredBy.value.value = "";
       this.phone.value.value = "";
       this.radioAttend.value = "";
       this.guestList = [];
@@ -287,7 +287,7 @@ export default {
   setup() {
     const { handleSubmit, handleReset } = useForm({
       validationSchema: {
-        name(value) {
+        registeredBy(value) {
           if (value?.length >= 2) return true;
           return "Name needs to be at least 2 characters.";
         },
@@ -302,7 +302,7 @@ export default {
       },
     });
 
-    const name = useField("name");
+    const registeredBy = useField("registeredBy");
     const phone = useField("phone");
     const radioAttend = useField("radioAttend");
     const formVisible = ref(true);
@@ -324,27 +324,77 @@ export default {
     const submit = handleSubmit(async (values) => {
       const now = new Date();
       values.submissionTime = now.toISOString();
-      values.guestList = guestList.value.join(", ");
 
-      try {
-        await addDoc(collection(db, "submissions"), values);
-        console.log("Submission added to Firebase!");
-        showSnackbar("Form submitted successfully", "success");
-        handleReset();
-        if (values.radioAttend == "yes") {
-          formAttending.value = true;
+      // Split the guestList string into an array of guests
+      const allGuests = guestList.value.join(", ");
+      const guests = allGuests.split(",").map((guest) => guest.trim());
+
+      if (allGuests.length > 0) {
+        // Create a separate submission for each guest
+        // console.log("guestmore than 0")
+        for (let guest of guests) {
+          const submission = { ...values };
+          submission.name = guest;
+          submission.tableNo = 0;
+          await addSubmission(submission);
         }
-        // console.log(values.radioAttend);
 
-        formVisible.value = false;
-      } catch (error) {
-        console.error("Error adding submission to Firebase: ", error);
-        showSnackbar("Form submission failed", "error");
+        const submission = { ...values };
+        submission.name = submission.registeredBy;
+        submission.tableNo = 0;
+        await addSubmission(submission);
+      } else {
+        // console.log("guest nononononono more than 0")
+        // No guests specified, use the name as the guest
+        const submission = { ...values };
+        submission.name = submission.registeredBy;
+        submission.tableNo = 0;
+        await addSubmission(submission);
       }
+
+      handleReset();
+      if (values.radioAttend === "yes") {
+        formAttending.value = true;
+      }
+      formVisible.value = false;
     });
 
+    async function addSubmission(submission) {
+      try {
+        await addDoc(collection(db, "submissions"), submission);
+        console.log(submission);
+        console.log("Submission added to Firebase!");
+        showSnackbar("Form submitted successfully", "success");
+      } catch (error) {
+        console.error("Error adding submission to Firebase: ", error);
+        showSnackbar(error, "error");
+      }
+    }
+
+    // const submit = handleSubmit(async (values) => {
+    //   const now = new Date();
+    //   values.submissionTime = now.toISOString();
+    //   values.guestList = guestList.value.join(", ");
+
+    //   try {
+    //     await addDoc(collection(db, "submissions"), values);
+    //     console.log("Submission added to Firebase!");
+    //     showSnackbar("Form submitted successfully", "success");
+    //     handleReset();
+    //     if (values.radioAttend == "yes") {
+    //       formAttending.value = true;
+    //     }
+    //     // console.log(values.radioAttend);
+
+    //     formVisible.value = false;
+    //   } catch (error) {
+    //     console.error("Error adding submission to Firebase: ", error);
+    //     showSnackbar("Form submission failed", "error");
+    //   }
+    // });
+
     return {
-      name,
+      registeredBy,
       phone,
       radioAttend,
       formVisible,
@@ -372,6 +422,17 @@ body {
 
 .rsvp-form {
   padding-top: 16px;
+
+  .v-field__outline__start.v-locale--is-ltr,
+  .v-field__outline__start {
+    border-radius: 120px 0 0 120px !important;
+    padding-right: 40px;
+  }
+
+  .v-field__outline__end.v-locale--is-ltr,
+  .v-field__outline__end {
+    border-radius: 0 120px 120px 0 !important;
+  }
 
   .guest-list-container {
     // background: salmon;
@@ -501,17 +562,6 @@ body {
   margin-bottom: 60px;
   // border-radius: 24px;
   // padding:24px;
-}
-
-.v-field--variant-outlined .v-field__outline__start.v-locale--is-ltr,
-.v-locale--is-ltr .v-field--variant-outlined .v-field__outline__start {
-  border-radius: 120px 0 0 120px !important;
-  padding-right: 40px;
-}
-
-.v-field--variant-outlined .v-field__outline__end.v-locale--is-ltr,
-.v-locale--is-ltr .v-field--variant-outlined .v-field__outline__end {
-  border-radius: 0 120px 120px 0 !important;
 }
 
 /* .top-snackbar {
