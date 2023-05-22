@@ -145,14 +145,63 @@
             <!-- <div style="height: 56px"></div> -->
           </form>
 
-          <div class="success-msg" >success message</div>
+          <!-- <div class="success-msg" v-else>success message</div> -->
+          <div class="success-msg" v-else>
+            <div class="thankyou-msg">
+              <div class="txt-cn thank">感</div>
+              <div class="txt-en thank">THANK YOU</div>
+              <div class="txt-cn thank">谢</div>
+            </div>
+
+            <div v-if="formAttending" class="message-point">
+              <v-divider
+                :thickness="6"
+                color="#784705"
+                style="margin: 12px 0"
+              ></v-divider>
+              <div class="txt-cn">請準備好你的好心情和好胃口</div>
+              <div class="txt-cn">開開心心的來赴約吧 期待和你見面！</div>
+
+              <div class="txt-en mt-2">
+                Please come with a joyful heart and a hearty appetite as we
+                eagerly anticipate our meeting on this special day. We can't
+                wait to celebrate our wedding with you!
+              </div>
+
+              <v-btn
+                @click.prevent="addToCalendar"
+                variant="flat"
+                color="#b0764f"
+                text-color="white"
+                :style="{ color: 'white', borderRadius: '80px' }"
+                append-icon="mdi-calendar-plus"
+                class="d-flex justify-content-center mt-3 w-100"
+              >
+                加入日曆 | Add to Calendar
+              </v-btn>
+            </div>
+
+            <div v-else class="message-point">
+              <v-divider
+                :thickness="6"
+                color="#784705"
+                style="margin: 12px 0"
+              ></v-divider>
+              <div class="txt-cn">我們已經收到你的㊗️福</div>
+              <div class="txt-cn">希望我們有緣再見！</div>
+
+              <div class="txt-en mt-2">
+                We have already received your blessings. We hope to have the
+                opportunity to meet again in the future! Take care!
+              </div>
+            </div>
+          </div>
           <v-snackbar
             v-model="snackbar.show"
             :position="snackbar.position"
             :color="snackbar.color"
             >{{ snackbar.text }}</v-snackbar
           >
-          
         </v-responsive>
       </v-container>
     </div>
@@ -200,6 +249,40 @@ export default {
       this.radioAttend.value = "";
       this.guestList = [];
     },
+    addToCalendar() {
+      const startDate = new Date("2023-04-01T18:00:00"); // Replace with your start date and time
+      const endDate = new Date("2023-04-01T22:30:00"); // Replace with your end date and time
+      const title = "Keng Hong and Joey | Wedding at OUG Jade Restaurant"; // Replace with your event title
+      const description =
+        "Join us for a night of celebration at our wedding dinner! We can't wait to share this special moment with you and honor our families and heritage!"; // Replace with your event description
+      const location =
+        "OUG Jade Restaurant, 2, Jalan Hujan Rahmat, Taman Overseas Union, 58200 Kuala Lumpur, Wilayah Persekutuan Kuala Lumpur, Malaysia"; // Replace with your event location
+      const calendarUrl = `https://www.google.com/calendar/render?action=TEMPLATE&dates=${startDate.toISOString()}/${endDate.toISOString()}&location=${encodeURIComponent(
+        location
+      )}&text=${encodeURIComponent(title)}&details=${encodeURIComponent(
+        description
+      )}`;
+
+      // Detect the user's operating system
+      const userAgent = window.navigator.userAgent;
+      const isMac = /Macintosh/.test(userAgent);
+      const isWindows = /Windows/.test(userAgent);
+
+      // Open the appropriate calendar application
+      if (isMac) {
+        window.location.href = `ical://event?start=${startDate.toISOString()}&end=${endDate.toISOString()}&location=${encodeURIComponent(
+          location
+        )}&summary=${encodeURIComponent(
+          title
+        )}&description=${encodeURIComponent(description)}`;
+      } else if (isWindows) {
+        window.open(
+          `outlookcal:${startDate.toISOString()} /${endDate.toISOString()} /${title} /${description} /${location}`
+        );
+      } else {
+        window.open(calendarUrl, "_blank");
+      }
+    },
   },
   setup() {
     const { handleSubmit, handleReset } = useForm({
@@ -223,6 +306,7 @@ export default {
     const phone = useField("phone");
     const radioAttend = useField("radioAttend");
     const formVisible = ref(true);
+    const formAttending = ref(false);
 
     const snackbar = ref({
       show: false,
@@ -247,6 +331,11 @@ export default {
         console.log("Submission added to Firebase!");
         showSnackbar("Form submitted successfully", "success");
         handleReset();
+        if (values.radioAttend == "yes") {
+          formAttending.value = true;
+        }
+        // console.log(values.radioAttend);
+
         formVisible.value = false;
       } catch (error) {
         console.error("Error adding submission to Firebase: ", error);
@@ -259,6 +348,7 @@ export default {
       phone,
       radioAttend,
       formVisible,
+      formAttending,
       snackbar,
       showSnackbar,
       // formSnackbar,
@@ -346,6 +436,62 @@ body {
           background: salmon;
         }
       }
+    }
+  }
+}
+
+.success-msg {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: #784704;
+  align-items: center;
+  text-align: center;
+
+  /* width: 350px;
+  height: 350px;
+  background: #efe9e2;
+  border-radius: 50%;
+  padding: 8% 12% 10%; */
+  /* line-height:1.5; */
+
+  .thankyou-msg {
+    width: 130px;
+    height: 130px;
+    display: flex;
+    /* background: rgba(203, 165, 142, 1); */
+    /* background: rgb(176, 118, 79); */
+    /* color: #f5f5f5; */
+    border: 2px solid rgb(176, 118, 79);
+    font-weight: 600;
+    border-radius: 50%;
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
+    /* box-shadow: 0px 4px 12px #000000; */
+  }
+
+  .txt-en.thank {
+    font-size: 1rem;
+    line-height: 1;
+    margin-top: 4px;
+  }
+
+  .txt-cn.thank {
+    font-size: 1.35rem;
+    font-weight: 400;
+    line-height: 1;
+  }
+
+  .message-point {
+    .txt-en {
+      font-size: 0.8rem;
+    }
+
+    .txt-cn {
+      font-size: 1rem;
+      font-weight: 400;
     }
   }
 }

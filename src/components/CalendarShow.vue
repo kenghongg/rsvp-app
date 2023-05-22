@@ -2,9 +2,9 @@
   <div class="pt-5 mt-5">
     <div class="intro-container">
       <div class="intro-txt">
-        <span class="txt-cn">我们的婚礼已经进入倒计时啦</span>
+        <span class="txt-cn">婚礼已经进入倒计时啦</span>
         <div class="intro-sub-txt">
-          /&nbsp;&nbsp; Counting down to forever  &nbsp;&nbsp;/
+          /&nbsp;&nbsp; Counting down to wedding  &nbsp;&nbsp;/
         </div>
         <div class="intro-rounded-icon">
           <v-icon>mdi-circle</v-icon>
