@@ -26,6 +26,7 @@ import CalendarShow from "@/components/CalendarShow.vue";
 import HeaderStart from "@/components/HeaderStart.vue";
 import CoupleDetails from "@/components/CoupleDetails.vue";
 
+
 export default {
   components: {
     BottomNavigation,

@@ -2,6 +2,7 @@
   <!-- <HelloWorld /> -->
   <!-- <PlayBgMusic /> -->
   <HeaderStart />
+  <TestData />
   <GuestData />
 
   <!-- <ImageSet /> -->
@@ -25,6 +26,7 @@
 
 <script setup>
 // import HelloWorld from '@/components/HelloWorld.vue'
+import TestData from "@/components/TestData.vue";
 import GuestData from "@/components/GuestData.vue";
 import BottomNavigation from "@/components/BottomNavigation.vue";
 import ContentPreWed from "@/components/ContentPreWed.vue";

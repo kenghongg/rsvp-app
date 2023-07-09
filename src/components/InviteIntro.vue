@@ -21,7 +21,7 @@
           我们将携双方父母真诚地邀请重要的亲人朋友 <br />到我们的婚禮慶典上
           一起见证和分享喜悅
         </div>
-        Together with our families joyfully invite you to join our wedding
+        Together with our family, we joyfully invite you to join our wedding
         celebration
       </div>
     </div>

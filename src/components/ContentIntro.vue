@@ -129,11 +129,9 @@
 
 <style lang="scss">
 .proposal-txt {
-  margin-top: -56px;
+  margin-top: -56px;  
   /* width: 100%; */
-
   color: #3b3b3b;
-
   .proposal-sub-txt {
     font-size: 0.85rem;
   }

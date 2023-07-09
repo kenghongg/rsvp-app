@@ -42,7 +42,7 @@
             color="#b0764f"
             prepend-icon="mdi-whatsapp"
             style="color: white"
-            href="https://wa.me/6582275922"
+            href="https://wa.me/6593412739"
             target="_blank"
             size="small"
             >/ Contact Her</v-btn

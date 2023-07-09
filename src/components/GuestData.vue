@@ -109,6 +109,7 @@ export default {
   computed: {
     displayedSubmissions() {
       return this.submissions.slice(0, this.rowCount);
+      
     },
   },
 

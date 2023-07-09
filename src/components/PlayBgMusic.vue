@@ -87,7 +87,7 @@
 <script>
 import music01 from "../assets/music/music-01.mp3";
 import music02 from "../assets/music/music-02.mp3";
-import music03 from "../assets/music/music-03.mp3";
+// import music03 from "../assets/music/music-03.mp3";
 import music04 from "../assets/music/music-04.mp3";
 import music05 from "../assets/music/music-05.mp3";
 
@@ -97,7 +97,7 @@ export default {
       musicOn: false,
       musicSrc: "",
       isLayerVisible: true,
-      musicSources: [music01, music02, music03, music04, music05],
+      musicSources: [music01, music02, music04, music05],
       // musicSources: [music02],
       isFirstTimer: false,
       isAndroid: false,
