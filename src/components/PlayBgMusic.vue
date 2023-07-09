@@ -107,13 +107,15 @@ export default {
   created() {
     const lastVisit = localStorage.getItem("lastVisit");
     const currentTime = Date.now();
+    const timeDiff = currentTime - lastVisit;
 
-    if (lastVisit) {
-      if (currentTime - lastVisit >= 2 * 60 * 60 * 1000) {
-        this.isFirstTimer = true;
-        document.body.style.overflow = "hidden";
-      }
+    if (lastVisit && timeDiff < 2 * 60 * 60 * 1000) {
+      // If last visit exists and the time difference is less than 2 hours,
+      // set isFirstTimer to false and don't display the first-timer message
+      this.isFirstTimer = false;
     } else {
+      // If last visit doesn't exist or the time difference is more than 2 hours,
+      // set isFirstTimer to true and display the first-timer message
       this.isFirstTimer = true;
       document.body.style.overflow = "hidden";
       localStorage.setItem("lastVisit", currentTime);
