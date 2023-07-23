@@ -159,7 +159,7 @@
                 color="#784705"
                 style="margin: 12px 0"
               ></v-divider>
-              <div class="txt-cn">開開心心的來赴約开开心心的来赴约吧～</div>
+              <div class="txt-cn">開開心心地來赴約吧～</div>
               <div class="txt-cn">期待和你見面！</div>
 
               <div class="txt-en mt-2">
