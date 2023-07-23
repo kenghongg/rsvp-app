@@ -1,5 +1,38 @@
 <template>
-  <div>
+  <!-- table group -->
+  <div
+    style="
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      padding: 20px;
+      margin-bottom: 60px;
+    "
+  >
+    <v-card
+      v-for="(group, index) in groupedSubmissions"
+      :key="index"
+      style="width: 250px"
+    >
+      <v-card-item>
+        <v-card-title>
+          Table {{ group[0].tableNo || "Unassigned" }}
+        </v-card-title>
+        <ol style="margin-left: 20px">
+          <li
+            v-for="(submission, idx) in group"
+            :key="idx"
+            class="attendee-info"
+          >
+            {{ submission.name }} -
+            <span style="font-size: 70%">{{ submission.registeredBy }}</span>
+          </li>
+        </ol>
+      </v-card-item>
+    </v-card>
+  </div>
+
+  <div style="padding: 20px">
     <v-table>
       <thead>
         <tr>
@@ -14,8 +47,12 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(submission, index) in displayedSubmissions" :key="submission.id" class="guest-data">
-          <td>{{index + 1}}</td>
+        <tr
+          v-for="(submission, index) in displayedSubmissions"
+          :key="submission.id"
+          class="guest-data"
+        >
+          <td>{{ index + 1 }}</td>
           <td>{{ submission.name }}</td>
           <td>
             <small>{{ submission.registeredBy }}</small>
@@ -56,6 +93,38 @@
     </v-table>
 
     <div>
+      <v-select
+        v-model="rowsPerPage"
+        :items="rowCounts"
+        label="Rows per page"
+        @change="changeRowCount"
+      ></v-select>
+    </div>
+
+    <!-- Pagination controls -->
+    <v-pagination
+      v-model="currentPage"
+      :length="Math.ceil(submissions.length / rowsPerPage)"
+    ></v-pagination>
+
+    <!-- Add the following checkbox to toggle attending submissions -->
+    <v-checkbox
+      v-model="showAttending"
+      label="Show Attending Submissions"
+    ></v-checkbox>
+
+    <!-- <div>
+      <template v-if="!isEditingTableNo">
+        <v-btn @click="startEditingTableNo">Edit Table No.</v-btn>
+      </template>
+      <template v-else>
+        <v-btn @click="confirmTableNoEdit">Confirm</v-btn>
+      </template>
+    </div> -->
+
+    <!-- Add the following button to change rows per page -->
+
+    <div>
       <template v-if="!isEditingTableNo">
         <v-btn @click="startEditingTableNo">Edit Table No.</v-btn>
       </template>
@@ -64,6 +133,16 @@
       </template>
     </div>
   </div>
+
+  <!-- <v-card width="400">
+    <v-card-item>
+      <v-card-title>This is a title</v-card-title>
+
+      <v-card-subtitle>This is a subtitle</v-card-subtitle>
+    </v-card-item>
+
+    <v-card-text> This is content </v-card-text>
+  </v-card> -->
 
   <v-dialog v-model="deleteConfirmationDialog" max-width="400">
     <v-card>
@@ -97,22 +176,95 @@ import {
 export default {
   data() {
     return {
+      showAttending: false, // Toggle to show attending submissions only
       submissions: [],
       isEditingTableNo: false,
       deleteConfirmationDialog: false,
       submissionToDeleteIndex: null,
       rowCount: 10, // Default row count
       rowCounts: [10, 25, 50, 100], // Available row count options
+      currentPage: 1, // Current page number
+      rowsPerPage: 10, // Number of rows per page
     };
   },
 
   computed: {
+    // displayedSubmissions() {
+    //   const startIndex = (this.currentPage - 1) * this.rowsPerPage;
+    //   const endIndex = startIndex + this.rowsPerPage;
+    //   return this.submissions.slice(startIndex, endIndex);
+    // },
     displayedSubmissions() {
-      return this.submissions.slice(0, this.rowCount);
-      
+      const startIndex = (this.currentPage - 1) * this.rowsPerPage;
+      const endIndex = startIndex + this.rowsPerPage;
+      return this.filteredSubmissions.slice(startIndex, endIndex);
     },
-  },
+    filteredSubmissions() {
+      // Filter the submissions based on the showAttending toggle
+      if (this.showAttending) {
+        return this.submissions.filter(
+          (submission) => submission.radioAttend === "yes"
+        );
+      } else {
+        return this.submissions;
+      }
+    },
 
+    groupedSubmissions() {
+      const groupedSubmissions = {};
+      this.submissions.forEach((submission) => {
+        const tableNo = submission.tableNo || "Unassigned";
+        if (!groupedSubmissions[tableNo]) {
+          groupedSubmissions[tableNo] = [];
+        }
+        groupedSubmissions[tableNo].push(submission);
+      });
+
+      // Sort submissions by tableNo
+      const sortedGroups = Object.values(groupedSubmissions).sort(
+        (groupA, groupB) => {
+          const tableNoA = groupA[0].tableNo || "Unassigned";
+          const tableNoB = groupB[0].tableNo || "Unassigned";
+          return tableNoA.localeCompare(tableNoB, undefined, {
+            numeric: true,
+            sensitivity: "base",
+          });
+        }
+      );
+
+      // Filter out groups where all submissions have radioAttend === 'no'
+      const filteredGroups = sortedGroups.filter((group) =>
+        group.some((submission) => submission.radioAttend === "yes")
+      );
+
+      return filteredGroups;
+    },
+
+    // groupedSubmissions() {
+    //   const groupedSubmissions = {};
+    //   this.submissions.forEach((submission) => {
+    //     const tableNo = submission.tableNo || "Unassigned";
+    //     if (!groupedSubmissions[tableNo]) {
+    //       groupedSubmissions[tableNo] = [];
+    //     }
+    //     groupedSubmissions[tableNo].push(submission);
+    //   });
+
+    //   // Sort submissions by tableNo
+    //   const sortedGroups = Object.values(groupedSubmissions).sort(
+    //     (groupA, groupB) => {
+    //       const tableNoA = groupA[0].tableNo || "Unassigned";
+    //       const tableNoB = groupB[0].tableNo || "Unassigned";
+    //       return tableNoA.localeCompare(tableNoB, undefined, {
+    //         numeric: true,
+    //         sensitivity: "base",
+    //       });
+    //     }
+    //   );
+
+    //   return sortedGroups;
+    // },
+  },
   async mounted() {
     await this.fetchSubmissions();
   },
@@ -123,6 +275,12 @@ export default {
       this.submissions.forEach((submission) => {
         submission.newTableNo = submission.tableNo;
       });
+    },
+
+    changeRowCount() {
+      // Optionally, you can fetch the submissions again if needed.
+      // await this.fetchSubmissions();
+      this.currentPage = 1; // Reset to the first page after changing the rows per page.
     },
 
     confirmTableNoEdit() {
