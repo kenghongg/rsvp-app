@@ -251,7 +251,7 @@ export default {
       const endDate = new Date("2023-04-01T22:30:00"); // Replace with your end date and time
       const title = "Keng Hong and Joey | Wedding at OUG Jade Restaurant"; // Replace with your event title
       const description =
-        "Join us for a night of celebration at our wedding dinner! We can't wait to share this special moment with you and honor our families and heritage!"; // Replace with your event description
+        "The love birds are tying the knot! You are invited to witness the special day. RSVP now to make unforgettable memories together."; // Replace with your event description
       const location =
         "OUG Jade Restaurant, 2, Jalan Hujan Rahmat, Taman Overseas Union, 58200 Kuala Lumpur, Wilayah Persekutuan Kuala Lumpur, Malaysia"; // Replace with your event location
       const calendarUrl = `https://www.google.com/calendar/render?action=TEMPLATE&dates=${startDate.toISOString()}/${endDate.toISOString()}&location=${encodeURIComponent(
