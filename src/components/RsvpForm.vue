@@ -159,13 +159,11 @@
                 color="#784705"
                 style="margin: 12px 0"
               ></v-divider>
-              <div class="txt-cn">請準備好你的好心情和好胃口</div>
-              <div class="txt-cn">開開心心的來赴約吧 期待和你見面！</div>
+              <div class="txt-cn">開開心心的來赴約开开心心的来赴约吧～</div>
+              <div class="txt-cn">期待和你見面！</div>
 
               <div class="txt-en mt-2">
-                Please come with a joyful heart and a hearty appetite as we
-                eagerly anticipate our meeting on this special day. We can't
-                wait to celebrate our wedding with you!
+                We are so excited & can't wait to see you!
               </div>
 
               <v-btn
@@ -187,12 +185,11 @@
                 color="#784705"
                 style="margin: 12px 0"
               ></v-divider>
-              <div class="txt-cn">我們已經收到你的㊗️福</div>
-              <div class="txt-cn">希望我們有緣再見！</div>
+              <div class="txt-cn">你的㊗️福，我們已經收到啦～</div>
+              <div class="txt-cn">我們會想念你的！</div>
 
               <div class="txt-en mt-2">
-                We have already received your blessings. We hope to have the
-                opportunity to meet again in the future! Take care!
+                We have received your blessings & we will miss you! Take care!
               </div>
             </div>
           </div>
