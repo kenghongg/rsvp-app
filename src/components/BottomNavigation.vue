@@ -24,7 +24,7 @@
           <span style="letter-spacing: 0.6px; display: block">Date</span>
         </v-btn>
 
-        <v-btn active>
+        <v-btn @click="scrollToBottom" active>
           <v-icon>mdi-send</v-icon>
           <span style="letter-spacing: 0.6px; display: block">RSVP</span>
         </v-btn>
@@ -76,6 +76,12 @@ export default {
 
       // Open the URL in a new window or tab
       window.open(url, "_blank");
+    },
+    scrollToBottom() {
+      window.scrollTo({
+        top: document.body.scrollHeight,
+        behavior: "smooth",
+      });
     },
   },
 };
