@@ -24,8 +24,10 @@
             :key="idx"
             class="attendee-info"
           >
-            {{ submission.name }} -
-            <span style="font-size: 70%">{{ submission.registeredBy }}</span>
+            {{ submission.name }}
+            <span style="font-size: 70%; color: #cccccc"
+              >&nbsp;- {{ submission.registeredBy }}</span
+            >
           </li>
         </ol>
       </v-card-item>

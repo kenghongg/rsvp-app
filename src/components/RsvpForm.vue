@@ -118,7 +118,7 @@
                           style="border-radius: 60px"
                           @click="addGuest"
                         >
-                          确定 | Conlanfirm
+                          确定 | Confirm
                         </v-btn>
                       </v-card-actions>
                     </div>
@@ -290,7 +290,7 @@ export default {
         },
         phone(value) {
           if (value?.length > 7 && /[0-9-]+/.test(value)) return true;
-          return "Phone number needs to be at least 8 digits.";
+          return "Valid phone number required.";
         },
         radioAttend(value) {
           if (value) return true;
