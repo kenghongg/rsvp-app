@@ -163,7 +163,7 @@
               <div class="txt-cn">期待和你見面！</div>
 
               <div class="txt-en mt-2">
-                We are so excited & can't wait to see you!
+                We are so excited &amp; can't wait to see you!
               </div>
 
               <v-btn
@@ -186,10 +186,10 @@
                 style="margin: 12px 0"
               ></v-divider>
               <div class="txt-cn">你的㊗️福，我們已經收到啦～</div>
-              <div class="txt-cn">我們會想念你的！</div>
+              <div class="txt-cn">我們會想念你的 ❤️</div>
 
               <div class="txt-en mt-2">
-                We have received your blessings & we will miss you! Take care!
+                We have received your blessings <br />&amp; we will miss you! <br/>Take care!
               </div>
             </div>
           </div>
