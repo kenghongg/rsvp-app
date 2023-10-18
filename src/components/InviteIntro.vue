@@ -3,7 +3,7 @@
     <div class="invite-intro-container">
       <div class="invite-intro-content">
         Keng Hong
-        <span class="txt-cn">景航</span>
+        <span class="txt-cn">何景航</span>
         <div class="invite-intro-details">
           <!-- <div class="txt-cn">新浪：呵呵呵</div> -->
         </div>
@@ -11,7 +11,7 @@
       <div class="invite-intro-content"><span class="amp">&amp;</span></div>
       <div class="invite-intro-content">
         Joey
-        <span class="txt-cn">祖儿</span>
+        <span class="txt-cn">黃祖兒</span>
         <div class="invite-intro-details"></div>
       </div>
     </div>
