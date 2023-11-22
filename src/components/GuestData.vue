@@ -1,18 +1,10 @@
 <template>
   <!-- table group -->
-  <div
-    style="
-      display: flex;
-      flex-wrap: wrap;
-      gap: 30px;
-      padding: 20px;
-      margin-bottom: 60px;
-    "
-  >
+  <div class="card-wrapper">
     <v-card
       v-for="(group, index) in groupedSubmissions"
       :key="index"
-      style="width: 250px"
+      class="card-container"
     >
       <v-card-item>
         <v-card-title>
@@ -367,6 +359,26 @@ export default {
 </script>
 
 <style lang="scss">
+.card-container {
+  width: 100%;
+}
+
+.card-wrapper {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 30px;
+  padding: 20px;
+  margin-bottom: 60px;
+
+  @media only screen and (max-width: 768px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media only screen and (max-width: 600px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 .guest-data {
   .table-no-detail {
     display: flex;
