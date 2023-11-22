@@ -379,6 +379,10 @@ export default {
   }
 }
 
+.v-main {
+  background: #f5f5f5;
+}
+
 .guest-data {
   .table-no-detail {
     display: flex;
