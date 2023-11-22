@@ -317,7 +317,13 @@ export default {
       }));
 
       this.submissions.sort((a, b) => {
+        // First, sort by submissionTime in descending order
         return new Date(b.submissionTime) - new Date(a.submissionTime);
+      });
+
+      // After the first sorting, you can perform the second sorting by tableNo in ascending order
+      this.submissions.sort((a, b) => {
+        return a.tableNo - b.tableNo;
       });
     },
     formatDate(dateString) {
