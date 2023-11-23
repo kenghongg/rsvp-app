@@ -7,8 +7,17 @@
       class="card-container"
     >
       <v-card-item>
-        <v-card-title>
+        <v-card-title
+          :class="
+            group[0].relationship
+              ? `card-cat-${group[0].relationship} card-cat`
+              : ''
+          "
+        >
           Table {{ group[0].tableNo || "Unassigned" }}
+          <span style="font-size: 60%; opacity: 0.6">{{
+            group[0].relationship
+          }}</span>
         </v-card-title>
         <ol style="margin-left: 20px">
           <li
@@ -36,6 +45,7 @@
           <th>Phone</th>
           <th>Attending</th>
           <th>Table No.</th>
+          <th>Relationship</th>
           <th>Submit Time</th>
           <th></th>
         </tr>
@@ -71,6 +81,62 @@
                 ></v-text-field>
               </template>
             </div>
+          </td>
+          <td>
+            <div class="table-no-detail">
+              <template v-if="!isEditingTableNo">
+                <v-select
+                  v-model="submission.relationship"
+                  :items="[
+                    'hodad',
+                    'homum',
+                    'ngdad',
+                    'kimmum',
+                    'tongleong',
+                    'joey',
+                    'kenghong',
+                  ]"
+                  underlined
+                  disabled
+                  class="medium-text-field"
+                ></v-select>
+              </template>
+              <template v-else>
+                <v-select
+                  v-model="submission.newRelationship"
+                  :items="[
+                    'hodad',
+                    'homum',
+                    'ngdad',
+                    'kimmum',
+                    'tongleong',
+                    'joey',
+                    'kenghong',
+                  ]"
+                  underlined
+                  dense
+                  class="medium-text-field"
+                ></v-select>
+              </template>
+            </div>
+
+            <!-- <div class="table-no-detail">
+              <template v-if="!isEditingTableNo">
+                <v-text-field
+                  v-model="submission.relationship"
+                  variant="outlined"
+                  class="medium-text-field"
+                  disabled
+                ></v-text-field>
+              </template>
+              <template v-else>
+                <v-text-field
+                  v-model="submission.newRelationship"
+                  variant="outlined"
+                  class="medium-text-field"
+                ></v-text-field>
+              </template>
+            </div> -->
           </td>
           <td>{{ formatDate(submission.submissionTime) }}</td>
           <td>
@@ -120,23 +186,13 @@
 
     <div>
       <template v-if="!isEditingTableNo">
-        <v-btn @click="startEditingTableNo">Edit Table No.</v-btn>
+        <v-btn @click="startEditingTableNo">Edit Table</v-btn>
       </template>
       <template v-else>
         <v-btn @click="confirmTableNoEdit">Confirm</v-btn>
       </template>
     </div>
   </div>
-
-  <!-- <v-card width="400">
-    <v-card-item>
-      <v-card-title>This is a title</v-card-title>
-
-      <v-card-subtitle>This is a subtitle</v-card-subtitle>
-    </v-card-item>
-
-    <v-card-text> This is content </v-card-text>
-  </v-card> -->
 
   <v-dialog v-model="deleteConfirmationDialog" max-width="400">
     <v-card>
@@ -163,6 +219,7 @@ import {
   collection,
   getDocs,
   deleteDoc,
+  addDoc,
   doc,
   updateDoc,
 } from "firebase/firestore";
@@ -179,6 +236,16 @@ export default {
       rowCounts: [10, 25, 50, 100], // Available row count options
       currentPage: 1, // Current page number
       rowsPerPage: 10, // Number of rows per page
+      relationshipOptions: [
+        { text: "何爸", value: "hodad" },
+        { text: "何妈", value: "homum" },
+        { text: "黄爸", value: "ngdad" },
+        { text: "金妈", value: "kimmum" },
+        { text: "栋梁", value: "tongleong" },
+        { text: "Joey", value: "joey" },
+        { text: "KengHong", value: "kenghong" },
+        // Add more options as needed
+      ],
     };
   },
 
@@ -268,6 +335,7 @@ export default {
       // Create a copy of table numbers for editing
       this.submissions.forEach((submission) => {
         submission.newTableNo = submission.tableNo;
+        submission.newRelationship = submission.relationship;
       });
     },
 
@@ -280,12 +348,18 @@ export default {
     confirmTableNoEdit() {
       if (this.isEditingTableNo) {
         const updatedSubmissions = this.submissions.filter(
-          (submission) => submission.newTableNo !== submission.tableNo
+          (submission) =>
+            submission.newTableNo !== submission.tableNo ||
+            submission.newRelationship !== submission.relationship
         );
         const updatePromises = updatedSubmissions.map((submission) => {
           submission.tableNo = submission.newTableNo;
+          submission.relationship = submission.newRelationship;
           const submissionRef = doc(db, "submissions", submission.id);
-          return updateDoc(submissionRef, { tableNo: submission.tableNo });
+          return updateDoc(submissionRef, {
+            tableNo: submission.tableNo,
+            relationship: submission.relationship,
+          });
         });
 
         Promise.all(updatePromises)
@@ -403,6 +477,30 @@ export default {
     line-height: 1;
     padding: 0;
   }
+  .medium-text-field {
+    height: 30px;
+  }
+  .medium-text-field .v-select__selection-text {
+    margin-top: -25px;
+  }
+  .medium-text-field .v-input__control {
+    height: 30px; /* Adjust the height as needed */
+    width: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0px !important;
+  }
+  .medium-text-field .v-label {
+    font-size: 12px !important; /* Adjust the font size as needed */
+    line-height: 1;
+    padding: 0;
+  }
+
+  .medium-text-field .v-field.v-field {
+    height: 30px;
+  }
+
   .v-input--density-default {
     --v-input-control-height: 0;
     --v-input-padding-top: 0;
@@ -419,5 +517,42 @@ export default {
     align-items: center;
     justify-content: center;
   }
+}
+
+.card-cat {
+  display: flex !important;
+  justify-content: space-between !important;
+  width: 100%;
+  padding: 6px 12px !important;
+  color: #fff;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+.card-cat-hodad {
+  background: #3498db;
+}
+
+.card-cat-homum {
+  background: #e74c3c;
+}
+
+.card-cat-ngdad {
+  background: #009688;
+}
+
+.card-cat-kimmum {
+  background: #f39c12;
+}
+
+.card-cat-tongleong {
+  background: #2ecc71;
+}
+
+.card-cat-joey {
+  background: #9b59b6;
+}
+
+.card-cat-kenghong {
+  background: #607d8b;
 }
 </style>
