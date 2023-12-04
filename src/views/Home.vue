@@ -9,17 +9,17 @@
   <CalendarShow />
   <MapAnimation />
 
-  <RsvpForm />
-  <BottomNavigation />
+  <!-- <RsvpForm /> -->
+  <!-- <BottomNavigation /> -->
 </template>
 
 <script>
-import BottomNavigation from "@/components/BottomNavigation.vue";
+// import BottomNavigation from "@/components/BottomNavigation.vue";
 import ContentPreWed from "@/components/ContentPreWed.vue";
 import InviteIntro from "@/components/InviteIntro.vue";
 import ContentIntro from "@/components/ContentIntro.vue";
 import ImageSet from "@/components/ImageSet.vue";
-import RsvpForm from "@/components/RsvpForm.vue";
+// import RsvpForm from "@/components/RsvpForm.vue";
 import PlayBgMusic from "@/components/PlayBgMusic.vue";
 import MapAnimation from "@/components/MapAnimation.vue";
 import CalendarShow from "@/components/CalendarShow.vue";
@@ -29,12 +29,12 @@ import CoupleDetails from "@/components/CoupleDetails.vue";
 
 export default {
   components: {
-    BottomNavigation,
+    // BottomNavigation,
     ContentPreWed,
     InviteIntro,
     ContentIntro,
     ImageSet,
-    RsvpForm,
+    // RsvpForm,
     PlayBgMusic,
     MapAnimation,
     CalendarShow,
